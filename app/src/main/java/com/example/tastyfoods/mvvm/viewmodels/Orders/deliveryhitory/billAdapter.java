@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tastyfoods.R;
-import com.example.tastyfoods.data.model.Bill;
+import com.example.tastyfoods.mvvm.model.Bill;
 
 import java.util.List;
 
@@ -35,7 +35,7 @@ public class billAdapter extends  RecyclerView.Adapter<billAdapter.billViewAdapt
         {
             return;
         }
-        holder.txtDateTime.setText(bill.getDateTime());
+        holder.txtDateTime.setText(bill.getDateTime().toString());
         holder.txtTotal.setText(String.valueOf(bill.getTotalMoney()));
     }
 

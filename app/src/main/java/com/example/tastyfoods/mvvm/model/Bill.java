@@ -16,6 +16,7 @@ public class Bill {
         this.totalMoney = totalMoney;
     }
 
+
     public int getBillId() {
         return billId;
     }
