@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "190688905408",
+    "firebase_url": "https://tastyfoods-f7a4a-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "tastyfoods-f7a4a",
+    "storage_bucket": "tastyfoods-f7a4a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:190688905408:android:f7c975443075c7ec98c525",
+        "android_client_info": {
+          "package_name": "com.example.tastyfoods"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "190688905408-roj5ag4m751348kcbm7ft6nm9ccvr2df.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKh568cazp_pModXTE2catibFdyYPfBfY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "190688905408-roj5ag4m751348kcbm7ft6nm9ccvr2df.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
