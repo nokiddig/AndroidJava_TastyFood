@@ -13,9 +13,9 @@
         android:layout_height="30dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
-        android:text="Xin chao"
+        android:text="Xin chào: "
         android:textColor="@color/drank_orange"
-        android:textSize="25dp"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +26,7 @@
         android:layout_marginStart="48dp"
         android:text="Đặt món ngay!"
         android:textColor="@color/drank_orange"
-        android:textSize="25dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewXinChao" />
 
