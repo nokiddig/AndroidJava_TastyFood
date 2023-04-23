@@ -15,7 +15,6 @@ import com.example.tastyfoods.R;
 import com.example.tastyfoods.mvvm.model.Category;
 import com.google.firebase.storage.FirebaseStorage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
@@ -41,7 +40,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
         holder.tvName.setText(category.getName());
 
-        // Tải hình ảnh từ Firebase Storage sử dụng Glide
         FirebaseStorage storage = FirebaseStorage.getInstance();
         Glide.with(mContext)
                 .load(category.getImage())
@@ -63,8 +61,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         public ViewHolder(View itemView) {
             super(itemView);
 
-            ivImage = itemView.findViewById(R.id.category_image);
-            tvName = itemView.findViewById(R.id.category_name);
+            ivImage = itemView.findViewById(R.id.productImage);
+            tvName = itemView.findViewById(R.id.textviewPrice);
         }
     }
 
