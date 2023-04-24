@@ -1,4 +1,4 @@
-package com.example.tastyfoods.mvvm.viewmodels.Orders.order;
+package com.example.tastyfoods.mvvm.viewmodels.orders;
 
 import android.os.Bundle;
 
@@ -12,10 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.tastyfoods.R;
-import com.example.tastyfoods.mvvm.viewmodels.Orders.delivery.DeliveryFragment;
-import com.example.tastyfoods.mvvm.viewmodels.Orders.deliveryhitory.HictoryFragment;
 
-public class orderfragment extends Fragment {
+public class OrderFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,7 +36,7 @@ public class orderfragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-                fragmentTransaction.add(R.id.fragment_main, new DeliveryFragment());
+                fragmentTransaction.add(R.id.fragment_main, new Delivery());
                 fragmentTransaction.commit();
             }
         });

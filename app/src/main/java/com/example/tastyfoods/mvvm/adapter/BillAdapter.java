@@ -14,10 +14,10 @@ import com.example.tastyfoods.mvvm.model.Bill;
 
 import java.util.List;
 
-public class billAdapter extends  RecyclerView.Adapter<billAdapter.billViewAdapter>{
+public class BillAdapter extends  RecyclerView.Adapter<BillAdapter.billViewAdapter>{
    private List<Bill> listBills;
 
-    public billAdapter(List<Bill> listBills) {
+    public BillAdapter(List<Bill> listBills) {
         this.listBills = listBills;
     }
 

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mvvm.viewmodels.Orders.order.orderfragment">
+    tools:context=".mvvm.viewmodels.orders.OrderFragment">
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
@@ -29,7 +29,6 @@
             android:text="Lịch Sử"
             android:textSize="16dp" />
 
-
     </LinearLayout>
 
     <LinearLayout
@@ -40,7 +39,12 @@
         tools:layout_editor_absoluteX="77dp"
         android:gravity="bottom">
 
+        <FrameLayout
+            android:id="@+id/fragment_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+        </FrameLayout>
 
     </LinearLayout>
 </FrameLayout>

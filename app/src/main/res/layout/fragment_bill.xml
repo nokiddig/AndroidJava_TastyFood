@@ -35,7 +35,7 @@
             android:id="@+id/btnReset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RESET"
+            android:text="Đặt Lại"
             android:backgroundTint="@color/drank_orange"/>
     </LinearLayout>
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.tastyfoods.mvvm.viewmodels.Orders.deliveryhitory;
+package com.example.tastyfoods.mvvm.viewmodels.orders;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tastyfoods.MainActivity;
 import com.example.tastyfoods.R;
+import com.example.tastyfoods.mvvm.adapter.BillAdapter;
 import com.example.tastyfoods.mvvm.model.Bill;
 
 import java.util.ArrayList;
@@ -41,12 +42,15 @@ public class HictoryFragment extends Fragment {
          LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mainActivity);
         list.setLayoutManager(linearLayoutManager);
 // adapter
-         billAdapter bill = new billAdapter(getListBill());
+         BillAdapter bill = new BillAdapter(getListBill());
          list.setAdapter(bill);
 
          RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(mainActivity, DividerItemDecoration.VERTICAL);
          list.addItemDecoration(itemDecoration);
+
+
         return view;
+
     }
     //fix du lieu
     private List<Bill> getListBill() {

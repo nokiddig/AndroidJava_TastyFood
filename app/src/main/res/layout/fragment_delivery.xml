@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".viewmodel.order.delivery.DeliveryFragment">
+    tools:context=".mvvm.viewmodels.orders.Delivery">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,6 +19,11 @@
                 android:text="Trạng thái đơn hàng: "
                 android:backgroundTint="@color/light_orange"
                 android:textSize="20dp"/>
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
         <LinearLayout
@@ -75,7 +80,7 @@
             android:id="@+id/btnReceived"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="received food"
+            android:text="Đã nhận được hàng"
             android:textStyle="italic"
             android:textSize="20dp"
             android:backgroundTint="@color/drank_orange"/>
