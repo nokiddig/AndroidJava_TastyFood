@@ -9,10 +9,9 @@
 
     <TextView
         android:id="@+id/textViewXinChao"
-        android:layout_width="200dp"
-        android:layout_height="30dp"
+        android:layout_width="199dp"
+        android:layout_height="29dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="5dp"
         android:text="Xin chào: "
         android:textColor="@color/drank_orange"
         android:textSize="25sp"
@@ -42,16 +41,15 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
 
-    <ImageView
-        android:id="@+id/imageViewBanner"
-        android:layout_width="368dp"
-        android:layout_height="132dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="4dp"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_margin="9dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="2dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewOrder"
-        tools:src=""
-        android:background="@color/light_orange"/>
-
+        tools:ignore="MissingConstraints"></androidx.viewpager2.widget.ViewPager2>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
