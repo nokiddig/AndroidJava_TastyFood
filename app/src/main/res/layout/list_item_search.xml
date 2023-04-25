@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/listItem"
+    android:layout_width="match_parent"
+    android:layout_height="150dp">
+
+
+    <ImageView
+        android:id="@+id/image_item"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/pizza" />
+
+    <TextView
+        android:id="@+id/name_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="14dp"
+        android:layout_toRightOf="@+id/image_item"
+        android:text="Tên"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/describe_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name_item"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="9dp"
+        android:layout_toRightOf="@+id/image_item"
+        android:text="mo ta" />
+
+    <TextView
+        android:id="@+id/price_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/describe_item"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="33dp"
+        android:layout_toRightOf="@+id/image_item"
+        android:text="tiền"
+        android:textColor="#EC5819"
+        android:textSize="17dp" />
+
+    <ImageButton
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/price_item"
+        android:layout_marginLeft="228dp"
+        android:layout_marginTop="-33dp"
+        android:layout_marginRight="70dp"
+        android:layout_toRightOf="@+id/image_item"
+        android:background="#ffffff"
+        android:src="@drawable/baseline_control_point_24" />
+
+    <TextView
+        android:id="@+id/hr"
+        android:layout_width="380dp"
+        android:layout_height="3dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="128dp"
+        android:background="#757561" />
+
+
+
+</RelativeLayout>
