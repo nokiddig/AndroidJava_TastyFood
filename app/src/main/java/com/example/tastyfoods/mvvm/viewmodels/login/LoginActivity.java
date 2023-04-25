@@ -48,8 +48,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void InitWidgest() {
-        btnVerifyPhoneNumber=findViewById(R.id.btn_verify_phone_number);
-        edtPhoneNumber=findViewById(R.id.edt_phone_number);
+        btnVerifyPhoneNumber=findViewById(R.id.btn_send_otp_code);
+        edtPhoneNumber=findViewById(R.id.edt_otp);
     }
 
     private void onClickVerifyPhoneNumber(String strPhoneNumber){
