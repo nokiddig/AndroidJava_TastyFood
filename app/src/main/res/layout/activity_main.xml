@@ -8,22 +8,18 @@
     android:orientation="vertical">
 
     <fragment
-        class="com.example.tastyfoods.mvvm.viewmodels.find.SearchFragment"
+       class="com.example.tastyfoods.mvvm.viewmodels.find.SearchFragment"
+        android:id="@+id/search_fagment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/search_fagment"/>
+        android:layout_height="181dp" />
 
-    <fragment
-        class="com.example.tastyfoods.mvvm.viewmodels.find.ItemFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"/>
-
+    <FrameLayout
+        android:id="@+id/fragment_layout_listSearch"
+        android:layout_width="match_parent"
+        android:layout_height="500dp" />
 
 
 
 
-
-
-
-
+    
 </LinearLayout>
