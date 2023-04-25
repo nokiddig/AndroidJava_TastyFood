@@ -23,19 +23,17 @@ import com.example.tastyfoods.mvvm.viewmodels.home.HomeProductViewModel;
 import java.util.List;
 
 public class HomeProductFragment extends Fragment {
-
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        // Inflate the layout for this fragment
-//
-//
-//
-//        return inflater.inflate(R.layout.fragment_home_product, container, false);
-//    }
     private RecyclerView recyclerView;
     private HomeProductAdapter homeProductAdapter;
     private HomeProductViewModel homeProductViewModel;
+    private static HomeProductFragment instance;
+
+    public static HomeProductFragment getInstance() {
+        if (instance == null){
+            instance = new HomeProductFragment();
+        }
+        return instance;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

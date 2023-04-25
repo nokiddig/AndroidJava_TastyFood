@@ -2,11 +2,9 @@ package com.example.tastyfoods.mvvm.view.home;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,7 +23,6 @@ public class HomeCategoryFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private CategoryAdapter categoryAdapter;
-    private CategoryViewModel categoryViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,13 +33,10 @@ public class HomeCategoryFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setHasFixedSize(true);
 
-        categoryViewModel = new ViewModelProvider(this).get(CategoryViewModel.class);
-        categoryViewModel.getCategories().observe(getViewLifecycleOwner(), new Observer<List<Category>>() {
-            @Override
-            public void onChanged(List<Category> categories) {
-                categoryAdapter = new CategoryAdapter(getContext(), categories);
-                recyclerView.setAdapter(categoryAdapter);
-            }
+        CategoryViewModel categoryViewModel = new ViewModelProvider(this).get(CategoryViewModel.class);
+        categoryViewModel.getCategories().observe(getViewLifecycleOwner(), categories -> {
+            categoryAdapter = new CategoryAdapter(getContext(), categories);
+            recyclerView.setAdapter(categoryAdapter);
         });
 
         return view;
