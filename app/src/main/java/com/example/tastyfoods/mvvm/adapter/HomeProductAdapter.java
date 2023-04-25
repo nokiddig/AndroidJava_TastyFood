@@ -52,12 +52,12 @@ public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.
                     // show product detail
                 }
             });
-            holder.buttonAdd.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    // add to cart
-                }
-            });
+//            holder.buttonAdd.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    // add to cart
+//                }
+//            });
         }
 
         @Override
@@ -77,7 +77,7 @@ public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.
                 imageViewProduct = itemView.findViewById(R.id.productImage);
                 textViewName = itemView.findViewById(R.id.textViewNameProduct);
                 textViewPrice = itemView.findViewById(R.id.textviewPrice);
-                buttonAdd = itemView.findViewById(R.id.imageButton);
+                //buttonAdd = itemView.findViewById(R.id.imageButton);
             }
         }
 

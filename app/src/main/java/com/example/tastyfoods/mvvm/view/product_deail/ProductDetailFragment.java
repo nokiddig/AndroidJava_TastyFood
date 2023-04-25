@@ -1,4 +1,4 @@
-package com.example.tastyfoods.mvvm.viewmodels.productD;
+package com.example.tastyfoods.mvvm.view.product_deail;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,7 +15,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class productDetailFragment extends Fragment {
+public class ProductDetailFragment extends Fragment {
     private  FirebaseFirestore db = FirebaseFirestore.getInstance();
     private TextView foodName;
     @Override

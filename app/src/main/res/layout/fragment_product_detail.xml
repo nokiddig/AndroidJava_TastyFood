@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/product"
-    tools:context=".mvvm.viewmodels.productD.productDetailFragment">
+    tools:context=".mvvm.view.product_detail.ProductDetailFragment">
     <!-- TODO: Update blank fragment layout -->
     <Button
         android:id="@+id/btn_back"
@@ -20,7 +20,7 @@
         <ImageView
             android:id="@+id/image"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="200dp"
             android:scaleType="fitXY"
             android:src="@drawable/anh2"/>
 
@@ -68,6 +68,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="đã bán |"/>
             <TextView
+                android:id="@+id/ratePoint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
@@ -109,7 +110,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="80dp"
+                android:layout_marginLeft="120dp"
                 android:background="@drawable/add" />
         </LinearLayout>
         <TextView
@@ -120,10 +121,15 @@
             android:layout_marginLeft="20dp"
             android:text="Bình luận"
             android:textStyle="bold"/>
-        <ListView
-            android:layout_width="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_comments"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            tools:listitem="" />
+
     </LinearLayout>
 </RelativeLayout>
