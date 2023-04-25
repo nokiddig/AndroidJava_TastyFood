@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.tastyfoods.R;
 import com.example.tastyfoods.mvvm.model.Food;
-import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.
         @NonNull
         @Override
         public HomeProductAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.home_item_product, parent, false);
+            View view = LayoutInflater.from(mContext).inflate(R.layout.home_product_item, parent, false);
             return new HomeProductAdapter.ViewHolder(view);
         }
 
@@ -38,15 +38,26 @@ public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             Food food = mFoods.get(position);
 
-            holder.tvName.setText(food.getName());
-            holder.tvPrice.setText(food.getPrice() + "đ");
+            holder.textViewName.setText(food.getName());
+            holder.textViewPrice.setText(food.getPrice() + "đ");
             // tải hình ảnh
-//            FirebaseStorage storage = FirebaseStorage.getInstance();
             Glide.with(mContext)
                     .load(food.getImage())
                     .centerCrop()
                     .placeholder(R.drawable.anh)
-                    .into(holder.ivImage);
+                    .into(holder.imageViewProduct);
+            holder.imageViewProduct.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // show product detail
+                }
+            });
+            holder.buttonAdd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // add to cart
+                }
+            });
         }
 
         @Override
@@ -56,15 +67,17 @@ public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.
 
         static class ViewHolder extends RecyclerView.ViewHolder {
 
-            ImageView ivImage;
-            TextView tvName, tvPrice;
+            ImageView imageViewProduct;
+            TextView textViewName, textViewPrice;
+            Button buttonAdd;
 
             public ViewHolder(View itemView) {
                 super(itemView);
 
-                ivImage = itemView.findViewById(R.id.productImage);
-                tvName = itemView.findViewById(R.id.textViewNameProduct);
-                tvPrice = itemView.findViewById(R.id.textviewPrice);
+                imageViewProduct = itemView.findViewById(R.id.productImage);
+                textViewName = itemView.findViewById(R.id.textViewNameProduct);
+                textViewPrice = itemView.findViewById(R.id.textviewPrice);
+                buttonAdd = itemView.findViewById(R.id.imageButton);
             }
         }
 

@@ -30,7 +30,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.home_item_category, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.home_category_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -46,6 +46,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
                 .centerCrop()
                 .placeholder(R.drawable.anh)
                 .into(holder.ivImage);
+
+        holder.ivImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // show product by category
+            }
+        });
     }
 
     @Override

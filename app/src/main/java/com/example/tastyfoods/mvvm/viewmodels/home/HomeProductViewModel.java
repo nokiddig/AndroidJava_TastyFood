@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeProductViewModel extends ViewModel {
-    private MutableLiveData<List<Food>> mFoods = new MutableLiveData<>();
+    private final MutableLiveData<List<Food>> mFoods = new MutableLiveData<>();
 
     public LiveData<List<Food>> getFoods() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();

@@ -30,7 +30,7 @@
     <FrameLayout
         android:id="@+id/layoutBotom"
         android:layout_width="410dp"
-        android:layout_height="250dp"
+        android:layout_height="255dp"
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutCenter">
