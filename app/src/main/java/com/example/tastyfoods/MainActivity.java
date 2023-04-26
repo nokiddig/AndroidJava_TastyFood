@@ -6,11 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.esri.arcgisruntime.mapping.ArcGISMap;
-import com.esri.arcgisruntime.mapping.Basemap;
-import com.esri.arcgisruntime.mapping.view.MapView;
-import com.example.tastyfoods.mvvm.viewmodels.orders.Delivery;
-import com.example.tastyfoods.mvvm.viewmodels.orders.OrderFragment;
+import com.example.tastyfoods.mvvm.view.orders.Delivery;
+import com.example.tastyfoods.mvvm.view.orders.OrderFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -24,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottomnav);
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){

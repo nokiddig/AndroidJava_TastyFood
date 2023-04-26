@@ -1,10 +1,10 @@
-package com.example.tastyfoods.mvvm.viewmodels.orders;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.tastyfoods.mvvm.view.orders;
 
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tastyfoods.R;
 

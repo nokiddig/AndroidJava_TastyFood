@@ -1,15 +1,14 @@
-package com.example.tastyfoods.mvvm.viewmodels.orders;
+package com.example.tastyfoods.mvvm.view.orders;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.tastyfoods.R;
 
@@ -27,7 +26,7 @@ public class OrderFragment extends Fragment {
             public void onClick(View v) {
                 FragmentManager fragmentManager = getChildFragmentManager();
                 FragmentTransaction fragmentTransaction =getChildFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_main, new HictoryFragment());
+                fragmentTransaction.replace(R.id.fragment_main, new HitoryFragment());
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }

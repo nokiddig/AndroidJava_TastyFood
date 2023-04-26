@@ -36,6 +36,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Đặt Lại"
+            android:textSize="20dp"
+            android:textStyle="italic"
             android:backgroundTint="@color/drank_orange"/>
     </LinearLayout>
 </LinearLayout>

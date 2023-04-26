@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mvvm.viewmodels.orders.OrderFragment">
+    tools:context=".mvvm.view.orders.OrderFragment">
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
@@ -41,8 +41,8 @@
 
         <FrameLayout
             android:id="@+id/fragment_main"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="400dp"
+            android:layout_height="550dp">
 
         </FrameLayout>
 

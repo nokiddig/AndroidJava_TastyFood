@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mvvm.viewmodels.orders.DetailDelivery">
+    tools:context=".mvvm.view.orders.DetailDelivery">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -107,7 +107,7 @@
             android:id="@+id/btnReceived"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Đã nhận "
+            android:text="ĐẶT LẠI"
             android:textStyle="italic"
             android:textSize="20dp"/>
     </LinearLayout>
