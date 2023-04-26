@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tastyfoods.MainActivity;
@@ -32,6 +33,8 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     Button btnVerifyPhoneNumber;
     EditText edtPhoneNumber;
+
+    TextView tvRegister;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,11 +48,24 @@ public class LoginActivity extends AppCompatActivity {
                 onClickVerifyPhoneNumber(strPhoneNumber);
             }
         });
+
+        tvRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoRegisterActivity();
+            }
+        });
+    }
+
+    private void gotoRegisterActivity() {
+        Intent intent=new Intent(this,RegisterActivity.class);
+        startActivity(intent);
     }
 
     private void InitWidgest() {
-        btnVerifyPhoneNumber=findViewById(R.id.btn_send_otp_code);
-        edtPhoneNumber=findViewById(R.id.edt_otp);
+        btnVerifyPhoneNumber=findViewById(R.id.btn_verify_phone_number);
+        edtPhoneNumber=findViewById(R.id.edt_phone_number);
+        tvRegister=findViewById(R.id.tv_register);
     }
 
     private void onClickVerifyPhoneNumber(String strPhoneNumber){
@@ -113,6 +129,7 @@ public class LoginActivity extends AppCompatActivity {
     private void gotoEnterOtpActivity(String strPhoneNumber, String verificationId) {
     Intent intent=new Intent(this,EnterOtpActivity.class);
     intent.putExtra("phone_number",strPhoneNumber);
+    intent.putExtra("action","login");
     intent.putExtra("verification_id",verificationId);
     startActivity(intent);
     }

@@ -12,6 +12,9 @@
         android:theme="@style/Theme.TastyFoods"
         tools:targetApi="31">
         <activity
+            android:name=".mvvm.viewmodels.login.LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".mvvm.viewmodels.login.RegisterActivity"
             android:exported="false" />
         <activity
@@ -21,7 +24,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".mvvm.viewmodels.login.LoginActivity"
+            android:name=".mvvm.viewmodels.login.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

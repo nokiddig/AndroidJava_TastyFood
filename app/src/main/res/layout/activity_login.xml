@@ -6,109 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".mvvm.viewmodels.login.LoginActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/backgr"
+    <EditText
+        android:id="@+id/edt_phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btn_send_otp_code"
-            android:layout_width="258dp"
-            android:layout_height="79dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="108dp"
-            android:background="@drawable/btn"
-            android:text="Send OTP code"
-            android:textSize="26sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_otp" />
+    <Button
+        android:id="@+id/btn_verify_phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="76dp"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_phone_number" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="116dp"
-            android:text="Register."
-            android:textColor="#571F1F"
-            android:textSize="23sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/tv_send_otp_again"
-            app:layout_constraintTop_toBottomOf="@+id/btn_send_otp_code" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:text="ood"
-            android:textColor="#FFFFFF"
-            android:textSize="64sp"
-            app:layout_constraintStart_toEndOf="@+id/tastyfood"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/edt_otp"
-            android:layout_width="354dp"
-            android:layout_height="60dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="3dp"
-            android:background="@drawable/edittext"
-            android:ems="10"
-            android:hint="Enter your phonenumber"
-            android:paddingLeft="20dp"
-            android:textColorHint="#9B9C9F"
-            android:textSize="25sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login" />
-
-        <TextView
-            android:id="@+id/login"
-            android:layout_width="228dp"
-            android:layout_height="52dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="76dp"
-            android:gravity="top"
-            android:text="Hello there !"
-            android:textColor="#571F1F"
-            android:textSize="32sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tastyfood"
-            tools:ignore="TextSizeCheck" />
-
-        <TextView
-            android:id="@+id/tastyfood"
-            android:layout_width="196dp"
-            android:layout_height="84dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="41dp"
-            android:layout_marginTop="36dp"
-            android:gravity="center_horizontal|top"
-            android:text="TastyF"
-            android:textColor="#FF8000"
-            android:textSize="64sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="TextSizeCheck" />
-
-        <TextView
-            android:id="@+id/tv_send_otp_again"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="120dp"
-            android:text="Don't have an account ?"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_send_otp_code" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    <TextView
+        android:id="@+id/tv_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="44dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_verify_phone_number" />
 </androidx.constraintlayout.widget.ConstraintLayout>

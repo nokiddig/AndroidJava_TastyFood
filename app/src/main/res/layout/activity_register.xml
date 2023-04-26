@@ -6,79 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".mvvm.viewmodels.login.RegisterActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/backgr">
+    <EditText
+        android:id="@+id/edt_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="220dp"
-            android:layout_height="67dp"
-            android:layout_marginStart="92dp"
-            android:layout_marginTop="100dp"
-            android:background="@drawable/btn"
-            android:text="Register"
-            android:textSize="26sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rectangle_2" />
+    <EditText
+        android:id="@+id/edt_phonenumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="44dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_user_name" />
 
-        <EditText
-            android:id="@+id/rectangle_"
-            android:layout_width="354dp"
-            android:layout_height="60dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="160dp"
-            android:background="@drawable/edittext"
-            android:ems="10"
-            android:hint="Username"
-            android:textColorHint="#9B9C9F"
-            android:textSize="25sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <EditText
+        android:id="@+id/edt_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_phonenumber" />
 
-        <EditText
-            android:id="@+id/Password"
-            android:layout_width="354dp"
-            android:layout_height="60dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="36dp"
-            android:background="@drawable/edittext"
-            android:ems="10"
-            android:hint="Password"
-            android:textColorHint="#9B9C9F"
-            android:textSize="25sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rectangle_" />
-
-        <EditText
-            android:id="@+id/rectangle_2"
-            android:layout_width="354dp"
-            android:layout_height="60dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="36dp"
-            android:background="@drawable/edittext"
-            android:ems="10"
-            android:hint="Phonenumber"
-            android:textColorHint="#9B9C9F"
-            android:textSize="25sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Password" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="57dp"
-            android:layout_height="58dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/leftarrow" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="60dp"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_password" />
 </androidx.constraintlayout.widget.ConstraintLayout>

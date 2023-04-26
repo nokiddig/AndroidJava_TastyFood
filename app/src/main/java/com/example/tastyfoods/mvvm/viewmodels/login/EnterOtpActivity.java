@@ -14,7 +14,10 @@ import android.widget.Toast;
 
 import com.example.tastyfoods.MainActivity;
 import com.example.tastyfoods.R;
+import com.example.tastyfoods.mvvm.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
@@ -24,7 +27,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class EnterOtpActivity extends AppCompatActivity {
@@ -33,7 +39,15 @@ public class EnterOtpActivity extends AppCompatActivity {
 
     PhoneAuthProvider.ForceResendingToken mForceResendingToken;
 
+
+    String action;
+
+    String mUsername;
+
+    String mUserpassword;
     FirebaseAuth mAuth;
+
+    FirebaseFirestore db;
     EditText edtOtp;
     Button btnSendOtpCode;
     TextView tvSendOtpAgain;
@@ -47,6 +61,7 @@ public class EnterOtpActivity extends AppCompatActivity {
         getDataIntent();
         INitWidgest();
         mAuth=FirebaseAuth.getInstance();
+        db=FirebaseFirestore.getInstance();
         btnSendOtpCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,6 +109,9 @@ public class EnterOtpActivity extends AppCompatActivity {
     private  void getDataIntent(){
         mPhoneNumber=getIntent().getStringExtra("phone_number");
         mVerificationId=getIntent().getStringExtra("verification_id");
+        mUsername=getIntent().getStringExtra("username");
+        mUserpassword=getIntent().getStringExtra("password");
+        action=getIntent().getStringExtra("action");
     }
 
     private void onClickSendOtpCode(String strOtp) {
@@ -115,10 +133,14 @@ public class EnterOtpActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
-
-                            FirebaseUser user = task.getResult().getUser();
+                            if(action=="login"){
+                                FirebaseUser user = task.getResult().getUser();
+                            }
+                            if(action=="register") {
+                                addUser(mUsername,mPhoneNumber,mUserpassword);
+                            }
                             // Update UI
-                            gotoMainActivity(user.getPhoneNumber());
+                            gotoMainActivity();
                         } else {
                             // Sign in failed, display a message and update the UI
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -131,9 +153,32 @@ public class EnterOtpActivity extends AppCompatActivity {
                 });
     }
 
-    private void gotoMainActivity(String phoneNumber) {
+    private void  addUser(String name,String phoneNumber,String password){
+        Map<String, Object> luser = new HashMap<>();
+        luser.put("userId", "3");
+        luser.put("phoneNumber",phoneNumber);
+        luser.put("password", password);
+        luser.put("name", name);
+        luser.put("birthday", null);
+        luser.put("address", "");
+        luser.put("image", "");
+        db.collection("user").document(name)
+                .set(luser)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully written!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error writing document", e);
+                    }
+                });
+    }
+    private void gotoMainActivity() {
         Intent intent=new Intent(this, MainActivity.class);
-        intent.putExtra("phone_number",phoneNumber);
         startActivity(intent);
     }
 }
