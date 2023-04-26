@@ -13,14 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tastyfoods.R;
 import com.example.tastyfoods.mvvm.model.Bill;
-import com.example.tastyfoods.mvvm.view.orders.OnItemClickListener;
 
 import java.util.List;
 
 
 public class BillAdapter extends  RecyclerView.Adapter<BillAdapter.billViewAdapter>{
    private List<Bill> listBills;
-   private OnItemClickListener listener;
    private Context mContext;
 
     public List<Bill> getListBills() {
@@ -52,7 +50,6 @@ public class BillAdapter extends  RecyclerView.Adapter<BillAdapter.billViewAdapt
         }
         holder.txtDateTime.setText(bill.getDateTime().toString());
         holder.txtTotal.setText(String.valueOf(bill.getTotalMoney()));
-        holder.bind(position,listener);
     }
 
     @Override
@@ -72,16 +69,6 @@ public class BillAdapter extends  RecyclerView.Adapter<BillAdapter.billViewAdapt
             txtTotal =itemView.findViewById(R.id.txt_total);
             txtDateTime=itemView.findViewById(R.id.txt_datetime);
             btnReset =itemView.findViewById(R.id.btnReset);
-        }
-        public void bind (final int postion, final OnItemClickListener listener)
-        {
-            btnReset.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v)
-                {
-                    listener.onItemClick(postion);
-                }
-            });
         }
     }
 }

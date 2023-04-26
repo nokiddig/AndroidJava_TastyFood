@@ -10,6 +10,7 @@ import com.example.tastyfoods.mvvm.view.orders.Delivery;
 import com.example.tastyfoods.mvvm.view.orders.OrderFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.mapbox.maps.plugin.Plugin;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,7 +18,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+
         bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottomnav);
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {

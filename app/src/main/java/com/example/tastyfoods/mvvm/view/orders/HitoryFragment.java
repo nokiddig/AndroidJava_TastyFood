@@ -28,7 +28,6 @@ import java.util.List;
  */
 public class HitoryFragment extends Fragment {
 
-    private MainActivity mainActivity;
     private RecyclerView recyclerView;
     private BillAdapter billAdapter;
     private BillViewModel billViewModel;
@@ -42,10 +41,9 @@ public class HitoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_bill_list, container, false);
-        mainActivity = (MainActivity) getActivity();
         recyclerView = view.findViewById(R.id.list);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mainActivity);
-        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setHasFixedSize(true);
 // adapter
         billViewModel = new ViewModelProvider(this).get(BillViewModel.class);
         billViewModel.getBills().observe(getViewLifecycleOwner(), new Observer<List<Bill>>() {
