@@ -1,5 +1,7 @@
 package com.example.tastyfoods.mvvm.adapter;
 
+
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,17 +16,28 @@ import com.example.tastyfoods.mvvm.model.Bill;
 
 import java.util.List;
 
-public class billAdapter extends  RecyclerView.Adapter<billAdapter.billViewAdapter>{
-   private List<Bill> listBills;
 
-    public billAdapter(List<Bill> listBills) {
+public class BillAdapter extends  RecyclerView.Adapter<BillAdapter.billViewAdapter>{
+   private List<Bill> listBills;
+   private Context mContext;
+
+    public List<Bill> getListBills() {
+        return listBills;
+    }
+
+    public void setListBills(List<Bill> listBills) {
         this.listBills = listBills;
+    }
+
+    public BillAdapter(List<Bill> listBills, Context mContext) {
+        this.listBills = listBills;
+        this.mContext = mContext;
     }
 
     @NonNull
     @Override
     public billViewAdapter onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_bill, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.fragment_bill, parent, false);
         return new billViewAdapter(view);
     }
 
