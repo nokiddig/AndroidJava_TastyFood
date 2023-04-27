@@ -41,7 +41,6 @@ public class EnterOtpActivity extends AppCompatActivity {
 
 
     String action;
-
     String mUsername;
 
     String mUserpassword;
@@ -133,10 +132,7 @@ public class EnterOtpActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
-                            if(action=="login"){
-                                FirebaseUser user = task.getResult().getUser();
-                            }
-                            if(action=="register") {
+                            if(action.equals("register")) {
                                 addUser(mUsername,mPhoneNumber,mUserpassword);
                             }
                             // Update UI
@@ -155,7 +151,6 @@ public class EnterOtpActivity extends AppCompatActivity {
 
     private void  addUser(String name,String phoneNumber,String password){
         Map<String, Object> luser = new HashMap<>();
-        luser.put("userId", "3");
         luser.put("phoneNumber",phoneNumber);
         luser.put("password", password);
         luser.put("name", name);
