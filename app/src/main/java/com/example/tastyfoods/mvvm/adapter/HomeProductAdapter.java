@@ -38,7 +38,6 @@ public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.
             View view = LayoutInflater.from(mContext).inflate(R.layout.home_product_item, parent, false);
             return new HomeProductAdapter.ViewHolder(view);
         }
-
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             Food food = mFoods.get(position);
@@ -69,12 +68,12 @@ public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.
                             .commit();
                 }
             });
-            holder.buttonAdd.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    // add to cart
-                }
-            });
+//            holder.buttonAdd.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    // add to cart
+//                }
+//            });
         }
 
         @Override
@@ -90,11 +89,10 @@ public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.
 
             public ViewHolder(View itemView) {
                 super(itemView);
-
                 imageViewProduct = itemView.findViewById(R.id.productImage);
                 textViewName = itemView.findViewById(R.id.textViewNameProduct);
                 textViewPrice = itemView.findViewById(R.id.textviewPrice);
-                buttonAdd = itemView.findViewById(R.id.imageButton);
+                //buttonAdd = itemView.findViewById(R.id.imageButton);
             }
         }
 
