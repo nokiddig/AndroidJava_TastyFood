@@ -3,17 +3,21 @@ package com.example.tastyfoods.mvvm.model;
 import java.util.Date;
 
 public class Bill {
-    private  int billId, userId;
+    private  int billId;
     private boolean status;
     private Date dateTime;
     private int totalMoney;
+    private String phoneNumber;
 
-    public Bill(int billId, int userId, boolean status, Date dateTime, int totalMoney) {
+    public Bill() {
+    }
+
+    public Bill(int billId, boolean status, Date dateTime, int totalMoney, String phoneNumber) {
         this.billId = billId;
-        this.userId = userId;
         this.status = status;
         this.dateTime = dateTime;
         this.totalMoney = totalMoney;
+        this.phoneNumber = phoneNumber;
     }
 
     public int getBillId() {
@@ -24,12 +28,16 @@ public class Bill {
         this.billId = billId;
     }
 
-    public int getUserId() {
-        return userId;
+    public void setTotalMoney(int totalMoney) {
+        this.totalMoney = totalMoney;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public boolean isStatus() {
