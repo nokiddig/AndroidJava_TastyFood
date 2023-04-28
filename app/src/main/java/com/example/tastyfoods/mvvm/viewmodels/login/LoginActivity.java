@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.example.tastyfoods.MainActivity;
 import com.example.tastyfoods.R;
-import com.example.tastyfoods.mvvm.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -29,36 +28,29 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class LoginActivity extends AppCompatActivity {
 
     private  static  final  String TAG= MainActivity.class.getName();
     FirebaseAuth mAuth;
-
     FirebaseFirestore db;
     Button btnVerifyPhoneNumber;
     EditText edtPhoneNumber;
-    
-    List<User> mUser;
 
     TextView tvRegister;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         InitWidgest();
-        mAuth=FirebaseAuth.getInstance();
         db=FirebaseFirestore.getInstance();
+        mAuth=FirebaseAuth.getInstance();
         btnVerifyPhoneNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String strPhoneNumber=edtPhoneNumber.getText().toString().trim();
                 checkUser(strPhoneNumber);
-                onClickVerifyPhoneNumber(strPhoneNumber);
             }
         });
 
@@ -133,24 +125,17 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
-    private  void checkUser(String phonenumber){
+    private void checkUser(String phonenumber){
         db.collection("user").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
-                    QuerySnapshot querySnapshot = task.getResult();
-                    List<User> userList = new ArrayList<>();
-                    for (QueryDocumentSnapshot documentSnapshot : querySnapshot) {
-                        User user = documentSnapshot.toObject(User.class);
-                        userList.add(user);
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        if(document.getId().equals(phonenumber)){
+                            onClickVerifyPhoneNumber(phonenumber);
+                        }
                     }
-                    for (User x:userList
-                         ) {
-                        if(x.getPhoneNumber().equals(phonenumber)){
-                            Toast.makeText(LoginActivity.this,"The verification code entered was invalid",Toast.LENGTH_SHORT).show();
-                    }
-                    }
-                    // Do something with the list of users
+                    Log.d(TAG, "Error getting documents: ", task.getException());
                 } else {
                     Log.d(TAG, "Error getting documents: ", task.getException());
                 }

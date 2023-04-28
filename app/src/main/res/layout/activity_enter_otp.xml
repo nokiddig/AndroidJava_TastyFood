@@ -11,8 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Code OTP"
         android:inputType="textPersonName"
-        android:text="eNTER"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
-        android:text="Button"
+        android:text="Verification"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_otp" />
 
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="52dp"
-        android:text="TextView"
+        android:text="Send Otp again"
         app:layout_constraintStart_toEndOf="@+id/btn_send_otp_code"
         app:layout_constraintTop_toBottomOf="@+id/edt_otp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -41,6 +41,7 @@ public class EnterOtpActivity extends AppCompatActivity {
 
 
     String action;
+
     String mUsername;
 
     String mUserpassword;
@@ -151,13 +152,14 @@ public class EnterOtpActivity extends AppCompatActivity {
 
     private void  addUser(String name,String phoneNumber,String password){
         Map<String, Object> luser = new HashMap<>();
+        luser.put("userId", "3");
         luser.put("phoneNumber",phoneNumber);
         luser.put("password", password);
         luser.put("name", name);
         luser.put("birthday", null);
         luser.put("address", "");
         luser.put("image", "");
-        db.collection("user").document(name)
+        db.collection("user").document(phoneNumber)
                 .set(luser)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

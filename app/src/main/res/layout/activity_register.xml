@@ -13,6 +13,7 @@
         android:layout_marginStart="88dp"
         android:layout_marginTop="60dp"
         android:ems="10"
+        android:hint="username"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,6 +25,7 @@
         android:layout_marginStart="88dp"
         android:layout_marginTop="44dp"
         android:ems="10"
+        android:hint="phonenumber"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_user_name" />
@@ -35,6 +37,7 @@
         android:layout_marginStart="88dp"
         android:layout_marginTop="40dp"
         android:ems="10"
+        android:hint="password"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_phonenumber" />
@@ -45,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="156dp"
         android:layout_marginTop="60dp"
-        android:text="Button"
+        android:text="Create"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_password" />
 </androidx.constraintlayout.widget.ConstraintLayout>
