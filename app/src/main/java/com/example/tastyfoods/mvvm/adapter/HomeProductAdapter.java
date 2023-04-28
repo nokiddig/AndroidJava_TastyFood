@@ -1,20 +1,25 @@
 package com.example.tastyfoods.mvvm.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.tastyfoods.R;
 import com.example.tastyfoods.mvvm.model.Food;
-
+import com.example.tastyfoods.mvvm.view.product_deail.ProductDetailFragment;
+import androidx.fragment.app.FragmentManager;
+import java.io.Serializable;
 import java.util.List;
 
 public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.ViewHolder>{
@@ -50,6 +55,18 @@ public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.
                 @Override
                 public void onClick(View view) {
                     // show product detail
+                    // Truyền dữ liệu sản phẩm sang Fragment ProductDetailFragment
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("food", food);
+                    ProductDetailFragment productDetailFragment = new ProductDetailFragment();
+                    productDetailFragment.setArguments(bundle);
+
+                    // Thay thế Fragment hiện tại bằng Fragment ProductDetailFragment
+                    FragmentManager fragmentManager = ((AppCompatActivity) mContext).getSupportFragmentManager();
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.frameLayout, productDetailFragment)
+                            .addToBackStack(null)
+                            .commit();
                 }
             });
             holder.buttonAdd.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +86,7 @@ public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.
 
             ImageView imageViewProduct;
             TextView textViewName, textViewPrice;
-            Button buttonAdd;
+            ImageButton buttonAdd;
 
             public ViewHolder(View itemView) {
                 super(itemView);
