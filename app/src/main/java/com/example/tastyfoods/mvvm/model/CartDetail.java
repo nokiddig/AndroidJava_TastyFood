@@ -1,14 +1,27 @@
 package com.example.tastyfoods.mvvm.model;
 
 public class CartDetail {
-    private int cartDetailId, userId;
+    private int cartDetailId, foodId;
     private int money, amount;
+    private String phoneNumber;
 
-    public CartDetail(int cartDetailId, int userId, int money, int amount) {
+    public CartDetail() {
+    }
+
+    public CartDetail(int cartDetailId, int foodId, int money, int amount, String phoneNumber) {
         this.cartDetailId = cartDetailId;
-        this.userId = userId;
+        this.foodId = foodId;
         this.money = money;
         this.amount = amount;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public int getFoodId() {
+        return foodId;
+    }
+
+    public void setFoodId(int foodId) {
+        this.foodId = foodId;
     }
 
     public int getCartDetailId() {
@@ -19,12 +32,12 @@ public class CartDetail {
         this.cartDetailId = cartDetailId;
     }
 
-    public int getUserId() {
-        return userId;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public int getMoney() {
