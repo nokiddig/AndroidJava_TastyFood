@@ -9,14 +9,26 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-    <string name="search_1">xsjxjecei</string>
-    <string name="search_2">xsjxjecei</string>
-    <string name="search_3">xsjxjecei</string>
-    <string name="search_4">xsjxjecei</string>
-    <string name="search_5">xsjxjecei</string>
+    <string name="name_1">Pork sandwich</string>
+    <string name="name_2">Cheese pizza</string>
+    <string name="name_3">Beef sandwich</string>
+    <string name="name_4">Seafood pizza</string>
+    <string name="name_5">Coca-cola</string>
 
-    <string name="search_6">xsjxjecei</string>
-    <string name="search_7">xsjxjecei</string>
+    <string name="name_6">Pepsi</string>
 
 
+    <string name="describe_1">Crispy and spicy</string>
+    <string name="describe_2">Crispy and chewy pizza</string>
+    <string name="describe_3">Chewy and fragrant</string>
+    <string name="describe_4">Including shrimp, vegetables</string>
+    <string name="describe_5">Increase energy</string>
+    <string name="describe_6">Increase energy</string>
+
+    <String name = "price_1">$4.6</String>
+    <String name = "price_2">$21</String>
+    <String name = "price_3">$3</String>
+    <String name = "price_4">$5</String>
+    <String name = "price_5">$1</String>
+    <String name = "price_6">$1</String>
 </resources>

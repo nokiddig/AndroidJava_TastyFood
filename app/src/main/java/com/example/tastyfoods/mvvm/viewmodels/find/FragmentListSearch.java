@@ -102,35 +102,35 @@ public class FragmentListSearch extends Fragment {
         image = new int[]{
                 R.drawable.bread,
                 R.drawable.pizza,
-                R.drawable.bread,
-                R.drawable.pizza,
-                R.drawable.bread,
-                R.drawable.pizza,
+                R.drawable.sandwich_thit_bo,
+                R.drawable.pizza_sea,
+                R.drawable.coca,
+                R.drawable.pepsi,
 
         };
         name = new String[]{
-                getString(R.string.search_1),
-                getString(R.string.search_2),
-                getString(R.string.search_3),
-                getString(R.string.search_4),
-                getString(R.string.search_5),
-                getString(R.string.search_6),
+                "R.string.name_1",
+                "R.string.name_2",
+                "R.string.name_3",
+                "R.string.name_4",
+                "R.string.name_5",
+                "R.string.name_6",
         };
         describe = new String[]{
-                getString(R.string.search_1),
-                getString(R.string.search_2),
-                getString(R.string.search_3),
-                getString(R.string.search_4),
-                getString(R.string.search_5),
-                getString(R.string.search_6),
+                "R.string.describe_1",
+                "R.string.describe_2",
+                "R.string.describe_3",
+                "R.string.describe_4",
+                "R.string.describe_5",
+                "R.string.describe_6",
         };
         price = new String[]{
-                getString(R.string.search_1),
-                getString(R.string.search_2),
-                getString(R.string.search_3),
-                getString(R.string.search_4),
-                getString(R.string.search_5),
-                getString(R.string.search_6),
+                "R.string.price_1",
+                "R.string.price_2",
+                "R.string.price_3",
+                "R.string.price_4",
+                "R.string.price_5",
+                "R.string.price_6",
 
         };
         button  = new int[]{
