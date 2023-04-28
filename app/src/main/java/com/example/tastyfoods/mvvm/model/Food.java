@@ -1,6 +1,8 @@
 package com.example.tastyfoods.mvvm.model;
 
-public class Food {
+import java.io.Serializable;
+
+public class Food implements Serializable {
 
     private int foodId;
     private String name, description, image;

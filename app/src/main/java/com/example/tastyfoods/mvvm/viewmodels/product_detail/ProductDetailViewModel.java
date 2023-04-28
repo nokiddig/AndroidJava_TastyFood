@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import com.example.tastyfoods.mvvm.model.Feedback;
+import com.example.tastyfoods.mvvm.model.Food;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -22,9 +23,9 @@ public class ProductDetailViewModel extends ViewModel {
     private final MutableLiveData<String> dataSell = new MutableLiveData<>();
     private final MutableLiveData<String> dataRatePoint = new MutableLiveData<>();
     private final MutableLiveData<String> dataImg = new MutableLiveData<>();
-    public ProductDetailViewModel() {
+    public ProductDetailViewModel(Food food) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("food").document("101")
+        db.collection("food").document(String.valueOf(food.getFoodId()))
                 .addSnapshotListener(new EventListener<DocumentSnapshot>() {
                     @Override
                     public void onEvent(DocumentSnapshot documentSnapshot, FirebaseFirestoreException e) {

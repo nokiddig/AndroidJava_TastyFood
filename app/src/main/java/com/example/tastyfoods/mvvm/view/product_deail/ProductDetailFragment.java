@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -32,6 +33,16 @@ public class ProductDetailFragment extends Fragment {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CommentsProductAdapter commentsProductAdapter;
     private CommentsProductViewModel commentsProductViewModel;
+    private Food food;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            food = (Food) bundle.getSerializable("food");
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,7 +57,7 @@ public class ProductDetailFragment extends Fragment {
         sell = view.findViewById(R.id.text_sell);
         comments = view.findViewById(R.id.recycler_view_comments);
         imgFood = view.findViewById(R.id.imageFood);
-        ProductDetailViewModel viewModel = new ViewModelProvider(this).get(ProductDetailViewModel.class);
+        ProductDetailViewModel viewModel = new ProductDetailViewModel(food);
         viewModel.getDataName().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
@@ -94,7 +105,7 @@ public class ProductDetailFragment extends Fragment {
         //Hien List Comments
         comments.setHasFixedSize(true);
         commentsProductViewModel = new ViewModelProvider(this).get(CommentsProductViewModel.class);
-        commentsProductViewModel.getFeedbacks().observe(getViewLifecycleOwner(), new Observer<List<Feedback>>() {
+        commentsProductViewModel.getFeedbacks(food).observe(getViewLifecycleOwner(), new Observer<List<Feedback>>() {
             @Override
             public void onChanged(List<Feedback> feedbacks) {
                 commentsProductAdapter = new CommentsProductAdapter(getContext(), feedbacks);

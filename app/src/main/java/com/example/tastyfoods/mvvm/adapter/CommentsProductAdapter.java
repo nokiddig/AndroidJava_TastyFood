@@ -56,9 +56,9 @@ public class CommentsProductAdapter extends RecyclerView.Adapter<CommentsProduct
                 holder.img_ratePoint.setImageResource(R.drawable.ratepoint5);
                 break;
         }
-        Log.d("no", feedback.getUserId() + "");
+        Log.d("no", feedback.getPhoneNumber());
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference docRef = db.collection("user").document(String.valueOf(feedback.getUserId()));
+        DocumentReference docRef = db.collection("user").document(String.valueOf(feedback.getPhoneNumber()));
 
         docRef.get().addOnSuccessListener(documentSnapshot -> {
             if (documentSnapshot.exists()) {
