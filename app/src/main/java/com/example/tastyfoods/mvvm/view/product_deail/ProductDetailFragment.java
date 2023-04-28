@@ -25,6 +25,7 @@ import com.example.tastyfoods.mvvm.model.Food;
 import com.example.tastyfoods.mvvm.viewmodels.home.HomeProductViewModel;
 import com.example.tastyfoods.mvvm.viewmodels.product_detail.CommentsProductViewModel;
 import com.example.tastyfoods.mvvm.viewmodels.product_detail.ProductDetailViewModel;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;

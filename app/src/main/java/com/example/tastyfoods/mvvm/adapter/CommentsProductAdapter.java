@@ -10,23 +10,25 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.example.tastyfoods.mvvm.model.Food;
 import com.example.tastyfoods.R;
 import com.example.tastyfoods.mvvm.model.Feedback;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class CommentsProductAdapter extends RecyclerView.Adapter<CommentsProductAdapter.ViewHolder>{
 
     private List<Feedback> mFeedbacks;
     private Context mContext;
+    int ratePoint1 , dem;
     public CommentsProductAdapter(Context context, List<Feedback> feedbacks) {
         mContext = context;
         mFeedbacks = feedbacks;
     }
-
     @NonNull
     @Override
     public CommentsProductAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -39,6 +41,9 @@ public class CommentsProductAdapter extends RecyclerView.Adapter<CommentsProduct
         Feedback feedback= mFeedbacks.get(position);
         holder.textComment.setText(feedback.getContent());
         int ratePoint = feedback.getRatePoint();
+        ratePoint1 = ratePoint1 +ratePoint;
+        dem =dem + 1;
+        double ratePointFood = (double) ratePoint1 / dem;
         switch (ratePoint){
             case 1:
                 holder.img_ratePoint.setImageResource(R.drawable.ratepoint1);
@@ -58,8 +63,11 @@ public class CommentsProductAdapter extends RecyclerView.Adapter<CommentsProduct
         }
         Log.d("no", feedback.getPhoneNumber());
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference docRef = db.collection("user").document(String.valueOf(feedback.getPhoneNumber()));
 
+        DocumentReference docRef1 = db.collection("food").document(String.valueOf(feedback.getFoodId()));
+        docRef1.update("ratePoint",ratePointFood);
+
+        DocumentReference docRef = db.collection("user").document(String.valueOf(feedback.getPhoneNumber()));
         docRef.get().addOnSuccessListener(documentSnapshot -> {
             if (documentSnapshot.exists()) {
                 holder.textNameUser.setText( documentSnapshot.getData().get("name").toString());
@@ -69,12 +77,7 @@ public class CommentsProductAdapter extends RecyclerView.Adapter<CommentsProduct
         }).addOnFailureListener(e -> {
             Log.d("TAG", "Error getting document: " + e.getMessage());
         });
-        // tải hình ảnh
-        //Glide.with(mContext)
-        //.load(.getImage())
-        // .centerCrop()
-        //.placeholder(R.drawable.anh)
-        //.into(holder.imageViewProduct);
+
     }
 
     @Override
@@ -98,7 +101,7 @@ public class CommentsProductAdapter extends RecyclerView.Adapter<CommentsProduct
         return mFeedbacks;
     }
 
-    public void setMFoods(List<Feedback> mFoods) {
+    public void setMFeedbacks(List<Feedback> mFeedbacks) {
         this.mFeedbacks = mFeedbacks;
     }
 }

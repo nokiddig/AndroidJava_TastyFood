@@ -1,5 +1,7 @@
 package com.example.tastyfoods.mvvm.viewmodels.product_detail;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -7,7 +9,10 @@ import androidx.lifecycle.ViewModel;
 import com.example.tastyfoods.mvvm.model.Category;
 import com.example.tastyfoods.mvvm.model.Feedback;
 import com.example.tastyfoods.mvvm.model.Food;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
@@ -31,6 +36,7 @@ public class CommentsProductViewModel extends ViewModel {
                 e.printStackTrace();
             }
         });
+
         return mFeedbacks;
     }
 }
