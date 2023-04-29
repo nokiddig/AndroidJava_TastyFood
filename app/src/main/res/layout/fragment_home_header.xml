@@ -33,23 +33,32 @@
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginEnd="15dp"
         android:clickable="true"
         android:contentDescription="@string/app_name"
-        app:layout_constraintStart_toEndOf="@+id/textViewOrder"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
-
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="369dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
+        app:circularflow_radiusInDP="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/home_search_border">
+    </androidx.appcompat.widget.SearchView>
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_margin="9dp"
+        android:layout_margin="5dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="2dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewOrder"
+        app:layout_constraintTop_toBottomOf="@+id/searchView"
         tools:ignore="MissingConstraints"></androidx.viewpager2.widget.ViewPager2>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
