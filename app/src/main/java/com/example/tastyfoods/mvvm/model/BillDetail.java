@@ -1,14 +1,26 @@
 package com.example.tastyfoods.mvvm.model;
 
 public class BillDetail {
-    private  int billDetailId, billId;
+    private  int billDetailId, billId, foodId;
     private int money, amount;
 
-    public BillDetail(int billDetailId, int billId, int money, int amount) {
+    public BillDetail() {
+    }
+
+    public BillDetail(int billDetailId, int billId, int foodId, int money, int amount) {
         this.billDetailId = billDetailId;
         this.billId = billId;
+        this.foodId = foodId;
         this.money = money;
         this.amount = amount;
+    }
+
+    public int getFoodId() {
+        return foodId;
+    }
+
+    public void setFoodId(int foodId) {
+        this.foodId = foodId;
     }
 
     public int getBillId() {
