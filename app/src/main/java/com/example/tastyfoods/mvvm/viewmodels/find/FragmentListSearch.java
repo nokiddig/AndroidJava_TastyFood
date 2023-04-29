@@ -109,37 +109,37 @@ public class FragmentListSearch extends Fragment {
 
         };
         name = new String[]{
-                "R.string.name_1",
-                "R.string.name_2",
-                "R.string.name_3",
-                "R.string.name_4",
-                "R.string.name_5",
-                "R.string.name_6",
+                "Pork sandwich",
+                "Cheese pizza",
+                "Beef sandwich",
+                "Seafood pizza",
+                "Coca-cola",
+                "Pepsi",
         };
         describe = new String[]{
-                "R.string.describe_1",
-                "R.string.describe_2",
-                "R.string.describe_3",
-                "R.string.describe_4",
-                "R.string.describe_5",
-                "R.string.describe_6",
+                "Crispy and spicy",
+                "Crispy and chewy pizza",
+                "Chewy and fragrant",
+                "Including shrimp, vegetables",
+                "Increase energy",
+                "Increase energy",
         };
         price = new String[]{
-                "R.string.price_1",
-                "R.string.price_2",
-                "R.string.price_3",
-                "R.string.price_4",
-                "R.string.price_5",
-                "R.string.price_6",
+                "$4",
+                "$21",
+                "$3",
+                "$5",
+                "$1",
+                "$1",
 
         };
         button  = new int[]{
-                R.drawable.baseline_arrow_back_ios_new_24,
-                R.drawable.baseline_arrow_back_ios_new_24,
-                R.drawable.baseline_arrow_back_ios_new_24,
-                R.drawable.baseline_arrow_back_ios_new_24,
-                R.drawable.baseline_arrow_back_ios_new_24,
-                R.drawable.baseline_arrow_back_ios_new_24,
+                R.drawable.baseline_control_point_24,
+                R.drawable.baseline_control_point_24,
+                R.drawable.baseline_control_point_24,
+                R.drawable.baseline_control_point_24,
+                R.drawable.baseline_control_point_24,
+                R.drawable.baseline_control_point_24,
 
         };
 

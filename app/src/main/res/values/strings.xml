@@ -25,10 +25,11 @@
     <string name="describe_5">Increase energy</string>
     <string name="describe_6">Increase energy</string>
 
-    <String name = "price_1">$4.6</String>
-    <String name = "price_2">$21</String>
-    <String name = "price_3">$3</String>
-    <String name = "price_4">$5</String>
-    <String name = "price_5">$1</String>
-    <String name = "price_6">$1</String>
+
+<!--    <String name = "price_1">$4</String>-->
+<!--    <String name = "price_2">$21</String>-->
+<!--    <String name = "price_3">$3</String>-->
+<!--    <String name = "price_4">$5</String>-->
+<!--    <String name = "price_5">$1</String>-->
+<!--    <String name = "price_6">$1</String>-->
 </resources>
