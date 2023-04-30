@@ -7,8 +7,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.tastyfoods.mvvm.view.home.HomeFragment;
+import com.example.tastyfoods.mvvm.view.orders.Delivery;
+import com.example.tastyfoods.mvvm.view.orders.OrderFragment;
 import com.example.tastyfoods.mvvm.view.product_deail.ProductDetailFragment;
-import com.example.tastyfoods.mvvm.viewmodels.Orders.delivery.DeliveryFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -30,11 +31,10 @@ public class MainActivity extends AppCompatActivity {
                         bottomNavigationView.getMenu().findItem(R.id.homefragment).setChecked(true);
                         break;
                     case R.id.cartfragment:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,new DeliveryFragment()).addToBackStack(null).commit();
-                        bottomNavigationView.getMenu().findItem(R.id.cartfragment).setChecked(true);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,new Delivery()).addToBackStack(null).commit();
                         break;
                     case R.id.deliveryfragment:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,new DeliveryFragment()).addToBackStack(null).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,new OrderFragment()).addToBackStack(null).commit();
                         bottomNavigationView.getMenu().findItem(R.id.deliveryfragment).setChecked(true);
                         break;
                     case R.id.profilesfragment:

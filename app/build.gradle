@@ -38,6 +38,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:21.3.0'
     implementation 'com.google.firebase:firebase-firestore:24.5.0'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
+
+
     implementation "com.mapbox.navigation:android:2.10.4"
     implementation 'com.mapbox.maps:android:10.12.2'
 
