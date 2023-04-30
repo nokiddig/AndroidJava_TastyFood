@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.tastyfoods.R;
@@ -26,6 +27,8 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -34,9 +37,15 @@ import java.util.concurrent.TimeUnit;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    public  static  final  String TAG=RegisterActivity.class.getName();
+    public static final String TAG = RegisterActivity.class.getName();
 
-    EditText edt_username,edt_password,edt_phonenumber;
+    EditText edt_username;
+
+    EditText edt_password;
+
+    EditText edt_phonenumber;
+
+    ImageView img_back;
 
     Button btn_register;
 
@@ -44,34 +53,51 @@ public class RegisterActivity extends AppCompatActivity {
     FirebaseFirestore db;
 
     FirebaseAuth mAuth;
+
+    Boolean check;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        db=FirebaseFirestore.getInstance();
-        mAuth=FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         Initwigest();
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username=edt_username.getText().toString().trim();
-                String userpassword=edt_password.getText().toString().trim();
-                String userphonenumber=edt_phonenumber.getText().toString().trim();
-                user=new User(username,userphonenumber,userpassword);
-                onClickVerifyPhoneNumber(userphonenumber);
+                String username = edt_username.getText().toString().trim();
+                String userpassword = edt_password.getText().toString().trim();
+                String userphonenumber = edt_phonenumber.getText().toString().trim();
+                user = new User(username, userphonenumber, userpassword);
+                if(checkUser(userphonenumber)==true){
+                    onClickVerifyPhoneNumber(userphonenumber);
+                }
+            }
+        });
+        img_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoLoginActivity();
             }
         });
     }
 
-    private void Initwigest() {
-
-        btn_register=findViewById(R.id.btn_register);
-        edt_password=findViewById(R.id.edt_password);
-        edt_username=findViewById(R.id.edt_user_name);
-        edt_phonenumber=findViewById(R.id.edt_phonenumber);
+    private void gotoLoginActivity() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
-    private void onClickVerifyPhoneNumber(String strPhoneNumber){
+    private void Initwigest() {
+
+        btn_register = findViewById(R.id.btn_register);
+        edt_password = findViewById(R.id.edt_password);
+        edt_username = findViewById(R.id.edt_user_name);
+        edt_phonenumber = findViewById(R.id.edt_phonenumber);
+        img_back = findViewById(R.id.img_back);
+    }
+
+    private void onClickVerifyPhoneNumber(String strPhoneNumber) {
         PhoneAuthOptions options =
                 PhoneAuthOptions.newBuilder(mAuth)
                         .setPhoneNumber(strPhoneNumber)       // Phone number to verify
@@ -85,18 +111,40 @@ public class RegisterActivity extends AppCompatActivity {
 
                             @Override
                             public void onVerificationFailed(@NonNull FirebaseException e) {
-                                Toast.makeText(RegisterActivity.this,"onVerificationFailed",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterActivity.this, "onVerificationFailed", Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onCodeSent(@NonNull String verificationId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                                 super.onCodeSent(verificationId, forceResendingToken);
-                                gotoEnterOtpActivity(user,verificationId);
+                                gotoEnterOtpActivity(user, verificationId);
                             }
                         })
                         .build();
         PhoneAuthProvider.verifyPhoneNumber(options);
     }
+
+    private Boolean checkUser(String phonenumber) {
+        check=true;
+        db.collection("user").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        if (document.getId().equals(phonenumber)) {
+                            check=false;
+                        }
+                    }
+                    Log.d(TAG, "Error getting documents: ", task.getException());
+                } else {
+                    Log.d(TAG, "Error getting documents: ", task.getException());
+                }
+            }
+        });
+        return check;
+    }
+
+
 
     private void gotoEnterOtpActivity(User user,String verificationId) {
         Intent intent=new Intent(this,EnterOtpActivity.class);

@@ -38,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
     Button btnVerifyPhoneNumber;
     EditText edtPhoneNumber;
 
+    TextView extError;
+
     TextView tvRegister;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +73,7 @@ public class LoginActivity extends AppCompatActivity {
         btnVerifyPhoneNumber=findViewById(R.id.btn_verify_phone_number);
         edtPhoneNumber=findViewById(R.id.edt_phone_number);
         tvRegister=findViewById(R.id.tv_register);
+        extError=findViewById(R.id.ext_error);
     }
 
     private void onClickVerifyPhoneNumber(String strPhoneNumber){
@@ -135,7 +138,7 @@ public class LoginActivity extends AppCompatActivity {
                             onClickVerifyPhoneNumber(phonenumber);
                         }
                     }
-                    Log.d(TAG, "Error getting documents: ", task.getException());
+                    Log.d(TAG, "Check user ", task.getException());
                 } else {
                     Log.d(TAG, "Error getting documents: ", task.getException());
                 }
