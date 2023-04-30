@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item android:id="@+id/menu_tab1" android:title="tab1" android:icon="@drawable/cart"/>
-    <item android:id="@+id/menu_tab2" android:title="tab2" android:icon="@drawable/cart"/>
-    <item android:id="@+id/menu_tab3" android:title="tab3" android:icon="@drawable/cart"/>
-    <item android:id="@+id/menu_tab4" android:title="tab4" android:icon="@drawable/cart"/>
-
+    <item
+        android:id="@+id/homefragment"
+        android:title="Home"
+        android:icon="@drawable/iconshome" />
+    <item
+        android:id="@+id/cartfragment"
+        android:title="Cart"
+        android:icon="@drawable/iconscart" />
+    <item
+        android:id="@+id/deliveryfragment"
+        android:title="Delivery"
+        android:icon="@drawable/iconslist" />
+    <item
+        android:id="@+id/profilesfragment"
+        android:title="Profiles"
+        android:icon="@drawable/iconsuser" />
 </menu>
