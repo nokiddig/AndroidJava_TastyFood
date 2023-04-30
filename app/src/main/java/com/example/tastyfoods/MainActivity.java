@@ -1,51 +1,49 @@
 package com.example.tastyfoods;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.view.MenuItem;
 
-import com.example.tastyfoods.mvvm.viewmodels.login.LoginActivity;
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.tastyfoods.mvvm.view.home.HomeFragment;
+import com.example.tastyfoods.mvvm.view.product_deail.ProductDetailFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_sign_out,btn_create;
-    String phoneNumber = "+1234567890";
+    BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottomnav);
 
-        Initwidgest();
-        btn_sign_out.setOnClickListener(new View.OnClickListener() {
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent=new Intent(MainActivity.this,LoginActivity.class);
-                startActivity(intent);
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.homefragment:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,new HomeFragment()).addToBackStack(null).commit();
+                        bottomNavigationView.getMenu().findItem(R.id.homefragment).setChecked(true);
+                        break;
+                    case R.id.cartfragment:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new HomeFragment()).addToBackStack(null).commit();
+                        bottomNavigationView.getMenu().findItem(R.id.cartfragment).setChecked(true);
+                        break;
+                    case R.id.deliveryfragment:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,new HomeFragment()).addToBackStack(null).commit();
+                        bottomNavigationView.getMenu().findItem(R.id.deliveryfragment).setChecked(true);
+                        break;
+                    case R.id.profilesfragment:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,new ProductDetailFragment()).addToBackStack(null).commit();
+                        bottomNavigationView.getMenu().findItem(R.id.profilesfragment).setChecked(true);
+                        break;
+                }
+                return false;
             }
         });
-        btn_create.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth mAuth = FirebaseAuth.getInstance();
-                mAuth.createUserWithEmailAndPassword("","")
-                        .addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                // User created successfully
-                            } else {
-                                // User creation failed
-                            }
-                        });
-            }
-        });
-    }
 
-    private void Initwidgest() {
-        btn_sign_out=findViewById(R.id.btn_sign_out);
-        btn_create=findViewById(R.id.btn_create);
     }
 }

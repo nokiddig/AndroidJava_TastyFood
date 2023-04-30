@@ -6,5 +6,5 @@
     <string name="money">400.000</string>
     <string name="describe">Phở là một món ăn có thể ăn vào bất cứ khoảng thời gian nào mà bạn muốn: sáng, trưa, chiều, tối đều được cả. Điểm đặc biệt, món phở không ăn kèm, uống kèm bất cứ thứ gì khác. Một bát phở bao gồm: nước dùng, bánh phở, gia vị ăn kèm như tiêu, hành lá, lát chanh, ớt… Nước dùng của phở có thể được chế biến từ xương bò: xương cục, xương ống và xương vè </string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name_access_token">pk.eyJ1IjoiYnVpdGhpYW5ocyIsImEiOiJjbGd0MGw0OWgxeWlhM21xYW9kNnBobGdxIn0.ECvN4m2D5jPACnMrCwPZBw</string>
 </resources>
