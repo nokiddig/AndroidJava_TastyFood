@@ -21,6 +21,16 @@ public class User {
         this.birthday = birthday;
     }
 
+    public User(String name,String phoneNUmber,String password){
+        this.phoneNumber=phoneNUmber;
+        this.name=name;
+        this.password=password;
+        this.money=0;
+        this.image="";
+        this.birthday=null;
+        this.address="";
+    }
+
     public String getName() {
         return name;
     }
