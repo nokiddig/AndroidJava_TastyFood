@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mvvm.viewmodels.find.SearchFragment">
+    tools:context=".mvvm.view.search.SearchFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,7 +14,7 @@
         android:background="@color/white">
 
         <ImageButton
-            android:id="@+id/image_btn_exit"
+            android:id="@+id/imageButtonBack"
             android:layout_width="57dp"
 
             android:layout_height="58dp"
@@ -33,7 +33,7 @@
 
             android:background="#D8D8CD"
             android:hint="Search"
-            app:layout_constraintLeft_toRightOf="@+id/image_btn_exit"
+            app:layout_constraintLeft_toRightOf="@+id/imageButtonBack"
             app:layout_constraintTop_toTopOf="parent" />
 
         <FrameLayout
@@ -43,7 +43,7 @@
             android:layout_marginStart="1dp"
             android:layout_marginTop="1dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_btn_exit">
+            app:layout_constraintTop_toBottomOf="@+id/imageButtonBack">
         </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

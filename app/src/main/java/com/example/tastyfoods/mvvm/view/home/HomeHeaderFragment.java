@@ -1,10 +1,7 @@
 package com.example.tastyfoods.mvvm.view.home;
 
-import static android.content.ContentValues.TAG;
-
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -18,8 +15,7 @@ import android.view.ViewGroup;
 import com.example.tastyfoods.R;
 import com.example.tastyfoods.mvvm.adapter.HomeSliderAdapter;
 import com.example.tastyfoods.mvvm.model.HomeSliderItem;
-import com.example.tastyfoods.mvvm.view.productdetail.ProductDetailFragment;
-import com.example.tastyfoods.mvvm.viewmodels.find.SearchFragment;
+import com.example.tastyfoods.mvvm.view.search.SearchFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +50,7 @@ public class HomeHeaderFragment extends Fragment {
                 FragmentManager fragmentManager = getParentFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, searchFragment)
-                        .addToBackStack(null)
+                        .addToBackStack("search")
                         .commit();
 //                Fragment fragmentB = new FragmentB(); // tạo ra một đối tượng FragmentB mới
 //                FragmentManager fragmentManager = getParentFragmentManager();

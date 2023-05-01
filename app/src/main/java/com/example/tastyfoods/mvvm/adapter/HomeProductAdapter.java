@@ -63,7 +63,7 @@ public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.
                     FragmentManager fragmentManager = ((AppCompatActivity) mContext).getSupportFragmentManager();
                     fragmentManager.beginTransaction()
                             .replace(R.id.frameLayout, productDetailFragment)
-                            .addToBackStack(null)
+                            .addToBackStack("productDetail")
                             .commit();
                 }
             });

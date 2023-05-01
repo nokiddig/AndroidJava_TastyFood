@@ -1,4 +1,4 @@
-package com.example.tastyfoods.mvvm.viewmodels.find;
+package com.example.tastyfoods.mvvm.view.search;
 
 import android.os.Bundle;
 
@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tastyfoods.R;
+import com.example.tastyfoods.mvvm.model.ItemSearch;
+import com.example.tastyfoods.mvvm.adapter.SearchAdapter;
 
 import java.util.ArrayList;
 

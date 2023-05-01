@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
@@ -105,6 +107,13 @@ public class ProductDetailFragment extends Fragment {
             public void onChanged(List<Feedback> feedbacks) {
                 commentsProductAdapter = new CommentsProductAdapter(getContext(), feedbacks);
                 comments.setAdapter(commentsProductAdapter);
+            }
+        });
+        Button buttonBack = view.findViewById(R.id.btn_back);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getParentFragmentManager().popBackStack("productDetail", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
         return view;

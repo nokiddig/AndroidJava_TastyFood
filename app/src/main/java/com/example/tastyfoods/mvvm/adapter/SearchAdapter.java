@@ -1,4 +1,4 @@
-package com.example.tastyfoods.mvvm.viewmodels.find;
+package com.example.tastyfoods.mvvm.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tastyfoods.R;
+import com.example.tastyfoods.mvvm.model.ItemSearch;
 
 import java.util.ArrayList;
 
@@ -37,11 +38,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ItemSearch itemSearch = itemSearchArrayList.get(position);
-        holder.imageView.setImageResource(itemSearch.image);
-        holder.textViewName.setText(itemSearch.name);
-        holder.textViewDescribe.setText(itemSearch.describe);
-        holder.textViewPrice.setText(itemSearch.price);
-        holder.imageButton.setImageResource(itemSearch.button);
+        holder.imageView.setImageResource(itemSearch.getImage());
+        holder.textViewName.setText(itemSearch.getName());
+        holder.textViewDescribe.setText(itemSearch.getDescribe());
+        holder.textViewPrice.setText(itemSearch.getPrice());
+        holder.imageButton.setImageResource(itemSearch.getButton());
     }
 
     @Override
