@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        InitWidgest();
+        initWidgets();
         db=FirebaseFirestore.getInstance();
         mAuth=FirebaseAuth.getInstance();
         btnVerifyPhoneNumber.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void InitWidgest() {
+    private void initWidgets() {
         btnVerifyPhoneNumber=findViewById(R.id.btn_verify_phone_number);
         edtPhoneNumber=findViewById(R.id.edt_phone_number);
         tvRegister=findViewById(R.id.tv_register);
@@ -128,14 +128,14 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
-    private void checkUser(String phonenumber){
+    private void checkUser(String phoneNumber){
         db.collection("user").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        if(document.getId().equals(phonenumber)){
-                            onClickVerifyPhoneNumber(phonenumber);
+                        if(document.getId().equals(phoneNumber)){
+                            onClickVerifyPhoneNumber(phoneNumber);
                         }
                     }
                     Log.d(TAG, "Check user ", task.getException());

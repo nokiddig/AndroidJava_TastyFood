@@ -10,10 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tastyfoods.R;
 
-import java.util.List;
-
 public class DeliveyAdapter extends RecyclerView.Adapter<DeliveyAdapter.deliveryViewAdapter> {
-
 
     @NonNull
     @Override
@@ -31,16 +28,16 @@ public class DeliveyAdapter extends RecyclerView.Adapter<DeliveyAdapter.delivery
         return 0;
     }
 
-    public class  deliveryViewAdapter extends RecyclerView.ViewHolder {
+    public static class  deliveryViewAdapter extends RecyclerView.ViewHolder {
         private TextView nameFood, address, amount, total;
-        private Button btnRecived;
+        private Button btnReceived;
         public deliveryViewAdapter(@NonNull View itemView) {
             super(itemView);
             nameFood = itemView.findViewById(R.id.txtnameFood);
             address =itemView.findViewById(R.id.txtAddress);
             amount = itemView.findViewById(R.id.txtAmount);
             total = itemView.findViewById(R.id.txtTotal);
-            btnRecived =itemView.findViewById(R.id.btnReceived);
+            btnReceived =itemView.findViewById(R.id.btnReceived);
         }
     }
 

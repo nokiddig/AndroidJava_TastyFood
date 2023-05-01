@@ -69,7 +69,6 @@ public class CommentsProductAdapter extends RecyclerView.Adapter<CommentsProduct
         }).addOnFailureListener(e -> {
             Log.d("TAG", "Error getting document: " + e.getMessage());
         });
-        // tải hình ảnh
         //Glide.with(mContext)
         //.load(.getImage())
         // .centerCrop()
@@ -96,9 +95,5 @@ public class CommentsProductAdapter extends RecyclerView.Adapter<CommentsProduct
 
     public List<Feedback> getMFeedbacks() {
         return mFeedbacks;
-    }
-
-    public void setMFoods(List<Feedback> mFoods) {
-        this.mFeedbacks = mFeedbacks;
     }
 }

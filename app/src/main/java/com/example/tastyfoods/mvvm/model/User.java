@@ -3,9 +3,8 @@ package com.example.tastyfoods.mvvm.model;
 import java.util.Date;
 
 public class User {
-    private  String name, address;
+    private  String name, address, phoneNumber, password, image;
     private int money;
-    private String phoneNumber, password, image;
     private Date birthday;
 
     public User() {

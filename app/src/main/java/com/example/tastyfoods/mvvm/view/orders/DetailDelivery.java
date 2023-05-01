@@ -11,7 +11,7 @@ import com.example.tastyfoods.R;
 public class DetailDelivery extends AppCompatActivity {
 
     TextView txtMoney, txtVouchers, txtTotal, txtNameFood;
-    Button btnRecived;
+    Button btnReceived;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,10 +21,10 @@ public class DetailDelivery extends AppCompatActivity {
     }
     private void init()
     {
-        txtMoney =(TextView) findViewById(R.id.txtMoney);
-        txtNameFood=(TextView) findViewById(R.id.txtnameFood);
-        txtTotal =(TextView) findViewById(R.id.txtTotal);
-        txtVouchers =(TextView) findViewById(R.id.txtVouchers);
-        btnRecived =(Button) findViewById(R.id.btnReceived);
+        txtMoney = findViewById(R.id.txtMoney);
+        txtNameFood = findViewById(R.id.txtnameFood);
+        txtTotal = findViewById(R.id.txtTotal);
+        txtVouchers = findViewById(R.id.txtVouchers);
+        btnReceived = findViewById(R.id.btnReceived);
     }
 }

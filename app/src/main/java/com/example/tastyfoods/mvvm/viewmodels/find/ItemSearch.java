@@ -2,10 +2,7 @@ package com.example.tastyfoods.mvvm.viewmodels.find;
 
 public class ItemSearch {
      int image;
-     String name;
-     String describe;
-
-     String price;
+     String name, describe, price;
      int button;
 
     public ItemSearch(int image, String name, String describe, String price, int button) {

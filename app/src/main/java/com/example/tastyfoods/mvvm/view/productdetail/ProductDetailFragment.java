@@ -1,6 +1,5 @@
-package com.example.tastyfoods.mvvm.view.product_deail;
+package com.example.tastyfoods.mvvm.view.productdetail;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,25 +11,21 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.tastyfoods.R;
-import com.example.tastyfoods.mvvm.adapter.CategoryAdapter;
 import com.example.tastyfoods.mvvm.adapter.CommentsProductAdapter;
-import com.example.tastyfoods.mvvm.adapter.HomeProductAdapter;
 import com.example.tastyfoods.mvvm.model.Feedback;
 import com.example.tastyfoods.mvvm.model.Food;
-import com.example.tastyfoods.mvvm.viewmodels.home.HomeProductViewModel;
-import com.example.tastyfoods.mvvm.viewmodels.product_detail.CommentsProductViewModel;
-import com.example.tastyfoods.mvvm.viewmodels.product_detail.ProductDetailViewModel;
+import com.example.tastyfoods.mvvm.viewmodels.productdetail.CommentsProductViewModel;
+import com.example.tastyfoods.mvvm.viewmodels.productdetail.ProductDetailViewModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
 public class ProductDetailFragment extends Fragment {
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final FirebaseFirestore DB = FirebaseFirestore.getInstance();
     private CommentsProductAdapter commentsProductAdapter;
     private CommentsProductViewModel commentsProductViewModel;
     private Food food;
@@ -49,11 +44,11 @@ public class ProductDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_product_detail, container, false);
         RecyclerView comments;
         ImageView imgFood;
-        TextView foodName, monNey, desCrible, ratePoint, sell;
+        TextView foodName, money, describe, ratePoint, sell;
         foodName = view.findViewById(R.id.text_name);
-        monNey = view.findViewById(R.id.text_money);
+        money = view.findViewById(R.id.text_money);
         ratePoint = view.findViewById(R.id.text_ratePoint);
-        desCrible = view.findViewById(R.id.text_describe);
+        describe = view.findViewById(R.id.text_describe);
         sell = view.findViewById(R.id.text_sell);
         comments = view.findViewById(R.id.recycler_view_comments);
         imgFood = view.findViewById(R.id.imageFood);
@@ -67,19 +62,19 @@ public class ProductDetailFragment extends Fragment {
         viewModel.getDataDescription().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                desCrible.setText(s);
+                describe.setText(s);
             }
         });
         viewModel.getDataPrice().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                monNey.setText(String.valueOf(s));
+                money.setText(String.valueOf(s));
             }
         });
         viewModel.getDataPrice().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                monNey.setText(String.valueOf(s));
+                money.setText(String.valueOf(s));
             }
         });
         viewModel.getDataSell().observe(getViewLifecycleOwner(), new Observer<String>() {

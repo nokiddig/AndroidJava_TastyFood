@@ -30,7 +30,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.home_category_item, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_home_category, parent, false);
         return new ViewHolder(view);
     }
 
@@ -38,16 +38,16 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Category category = mCategories.get(position);
 
-        holder.tvName.setText(category.getName());
+        holder.textViewName.setText(category.getName());
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         Glide.with(mContext)
                 .load(category.getImage())
                 .centerCrop()
                 .placeholder(R.drawable.anh)
-                .into(holder.ivImage);
+                .into(holder.imageView);
 
-        holder.ivImage.setOnClickListener(new View.OnClickListener() {
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // show product by category
@@ -62,14 +62,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView ivImage;
-        TextView tvName;
+        ImageView imageView;
+        TextView textViewName;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            ivImage = itemView.findViewById(R.id.productImage);
-            tvName = itemView.findViewById(R.id.textviewPrice);
+            imageView = itemView.findViewById(R.id.productImage);
+            textViewName = itemView.findViewById(R.id.textviewPrice);
         }
     }
 

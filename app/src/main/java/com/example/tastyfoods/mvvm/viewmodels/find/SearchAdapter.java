@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.helper.widget.Layer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tastyfoods.R;
@@ -20,10 +19,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
 
     Context context;
     ArrayList<ItemSearch> itemSearchArrayList;
-
-
-
-    // tạo 1 contructer cho class
 
 
     public SearchAdapter(Context context, ArrayList<ItemSearch> itemSearchArrayList) {
@@ -59,7 +54,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     //  KHAI BÁO ÁNH XẠ
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        // đưa fragmnet_list_search vào
+        // đưa fragment_list_search vào
         ImageView image_item;
         TextView name_item;
         TextView describe_item;

@@ -16,8 +16,8 @@ public class CategoryViewModel extends ViewModel {
     private MutableLiveData<List<Category>> mCategories = new MutableLiveData<>();
 
     public LiveData<List<Category>> getCategories() {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("category").addSnapshotListener((value, error) -> {
+        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseFirestore.collection("category").addSnapshotListener((value, error) -> {
             try {
                 if (value != null) {
                     List<Category> categories = new ArrayList<>();

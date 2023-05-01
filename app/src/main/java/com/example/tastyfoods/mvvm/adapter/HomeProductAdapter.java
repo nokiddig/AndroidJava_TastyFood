@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,9 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.tastyfoods.R;
 import com.example.tastyfoods.mvvm.model.Food;
-import com.example.tastyfoods.mvvm.view.product_deail.ProductDetailFragment;
+import com.example.tastyfoods.mvvm.view.productdetail.ProductDetailFragment;
 import androidx.fragment.app.FragmentManager;
-import java.io.Serializable;
+
 import java.util.List;
 
 public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.ViewHolder>{
@@ -35,7 +34,7 @@ public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.
         @NonNull
         @Override
         public HomeProductAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.home_product_item, parent, false);
+            View view = LayoutInflater.from(mContext).inflate(R.layout.item_home_product, parent, false);
             return new HomeProductAdapter.ViewHolder(view);
         }
         @Override
@@ -44,7 +43,7 @@ public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.
 
             holder.textViewName.setText(food.getName());
             holder.textViewPrice.setText(food.getPrice() + "đ");
-            // tải hình ảnh
+
             Glide.with(mContext)
                     .load(food.getImage())
                     .centerCrop()
@@ -54,13 +53,13 @@ public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.
                 @Override
                 public void onClick(View view) {
                     // show product detail
-                    // Truyền dữ liệu sản phẩm sang Fragment ProductDetailFragment
+                    // send data to Fragment ProductDetailFragment
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("food", food);
                     ProductDetailFragment productDetailFragment = new ProductDetailFragment();
                     productDetailFragment.setArguments(bundle);
 
-                    // Thay thế Fragment hiện tại bằng Fragment ProductDetailFragment
+                    // replace this Fragment to ProductDetailFragment
                     FragmentManager fragmentManager = ((AppCompatActivity) mContext).getSupportFragmentManager();
                     fragmentManager.beginTransaction()
                             .replace(R.id.frameLayout, productDetailFragment)

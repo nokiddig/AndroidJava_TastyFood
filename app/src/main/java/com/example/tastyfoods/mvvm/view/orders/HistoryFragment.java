@@ -8,32 +8,28 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tastyfoods.MainActivity;
 import com.example.tastyfoods.R;
 import com.example.tastyfoods.mvvm.adapter.BillAdapter;
 import com.example.tastyfoods.mvvm.model.Bill;
 import com.example.tastyfoods.mvvm.viewmodels.orders.BillViewModel;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
 /**
  * A fragment representing a list of Items.
  */
-public class HitoryFragment extends Fragment {
+public class HistoryFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private BillAdapter billAdapter;
     private BillViewModel billViewModel;
     private  View view;
 
-    public HitoryFragment() {
+    public HistoryFragment() {
     }
 
 

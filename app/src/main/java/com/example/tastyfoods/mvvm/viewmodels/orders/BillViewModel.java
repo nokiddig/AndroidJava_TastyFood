@@ -18,7 +18,7 @@ public class BillViewModel extends ViewModel {
 
     public LiveData<List<Bill>> getBills() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("bIll").addSnapshotListener((value, error) -> {
+        db.collection("bill").addSnapshotListener((value, error) -> {
             try {
                 if (value != null) {
                     List<Bill> bills = new ArrayList<>();

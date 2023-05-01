@@ -1,12 +1,7 @@
 package com.example.tastyfoods.mvvm.model;
 
 public class Delivery {
-    private String Address;
-    private String NameFood;
-    private String Amount;
-
-    private String Total;
-    private String Price;
+    private String Address, NameFood, Amount, Total, Price;
 
     public Delivery(String address, String nameFood, String amount, String total, String price) {
         Address = address;

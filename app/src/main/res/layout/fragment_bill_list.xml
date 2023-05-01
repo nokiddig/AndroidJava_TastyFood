@@ -9,5 +9,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".mvvm.view.orders.HitoryFragment"
+    tools:context=".mvvm.view.orders.HistoryFragment"
     tools:listitem="@layout/fragment_bill" />

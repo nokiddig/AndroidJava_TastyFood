@@ -11,7 +11,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeProductViewModel extends ViewModel {
+public class ProductViewModel extends ViewModel {
     private final MutableLiveData<List<Food>> mFoods = new MutableLiveData<>();
 
     public LiveData<List<Food>> getFoods() {

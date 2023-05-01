@@ -21,15 +21,15 @@ public class OrderFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_orderfragment, container, false);
-        Button btnHitory =view.findViewById(R.id.btnHitory);
+        Button btnHistory =view.findViewById(R.id.btnHitory);
         Button btnDelivery =view.findViewById(R.id.btnDelivery);
-        btnHitory.setOnClickListener(new View.OnClickListener() {
+        btnHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btnHitory.setBackground(new ColorDrawable(Color.rgb(255, 204, 153)));
+                btnHistory.setBackground(new ColorDrawable(Color.rgb(255, 204, 153)));
                 FragmentManager fragmentManager = getChildFragmentManager();
                 FragmentTransaction fragmentTransaction =getChildFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_main, new HitoryFragment());
+                fragmentTransaction.replace(R.id.fragment_main, new HistoryFragment());
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
@@ -39,7 +39,7 @@ public class OrderFragment extends Fragment {
             public void onClick(View v) {
                 btnDelivery.setBackground(new ColorDrawable(Color.rgb(255, 204, 153)));
                 FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_main, new Delivery());
+                fragmentTransaction.replace(R.id.fragment_main, new DeliveryFragment());
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }

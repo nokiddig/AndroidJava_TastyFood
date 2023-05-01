@@ -1,8 +1,7 @@
 package com.example.tastyfoods.mvvm.model;
 
 public class BillDetail {
-    private  int billDetailId, billId, foodId;
-    private int money, amount;
+    private int billDetailId, billId, foodId, money, amount;
 
     public BillDetail() {
     }

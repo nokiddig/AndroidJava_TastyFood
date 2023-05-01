@@ -61,7 +61,7 @@ public class BillAdapter extends  RecyclerView.Adapter<BillAdapter.billViewAdapt
         return 0;
     }
 
-    public class billViewAdapter extends RecyclerView.ViewHolder{
+    public static class billViewAdapter extends RecyclerView.ViewHolder{
         private TextView  txtTotal,  txtDateTime;
         private Button btnReset;
         public billViewAdapter(@NonNull View itemView) {

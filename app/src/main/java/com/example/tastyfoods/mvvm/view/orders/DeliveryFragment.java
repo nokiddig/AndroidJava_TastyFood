@@ -13,15 +13,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.tastyfoods.R;
 import com.mapbox.maps.MapView;
-import com.mapbox.maps.MapboxMap;
-import com.mapbox.maps.Style;
 
-public class Delivery extends Fragment  {
+public class DeliveryFragment extends Fragment  {
     private View view;
 
-    TextView txtnameFood, txtamount, txtadd, txttotal;
+    TextView txtNameFood, txtAmount, txtAdd, txtTotal;
     Button btnReceived;
-    public Delivery() {
+    public DeliveryFragment() {
     }
 
     @Override
@@ -36,10 +34,10 @@ public class Delivery extends Fragment  {
 
         MapView mapView ;
 
-        txtnameFood = view.findViewById(R.id.txtnameFood);
-        txtamount = view.findViewById(R.id.txtAmount);
-        txtadd =view.findViewById(R.id.txtAddress);
-        txttotal = view.findViewById(R.id.txtTotal);
+        txtNameFood = view.findViewById(R.id.txtnameFood);
+        txtAmount = view.findViewById(R.id.txtAmount);
+        txtAdd =view.findViewById(R.id.txtAddress);
+        txtTotal = view.findViewById(R.id.txtTotal);
         btnReceived = view.findViewById(R.id.btnReceived);
 //        mapView = view.findViewById(R.id.map);
 //        if (mapView != null && mapView.getMapboxMap() != null) {
@@ -48,9 +46,9 @@ public class Delivery extends Fragment  {
         btnReceived.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HitoryFragment hitoryFragment = new HitoryFragment();
+                HistoryFragment historyFragment = new HistoryFragment();
                 FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_delivery, hitoryFragment);
+                transaction.replace(R.id.fragment_delivery, historyFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
