@@ -12,6 +12,7 @@ import com.example.tastyfoods.mvvm.view.orders.DeliveryFragment;
 import com.example.tastyfoods.mvvm.view.orders.OrderFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomnav);
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,new HomeFragment()).addToBackStack(null).commit();
         bottomNavigationView.getMenu().findItem(R.id.homefragment).setChecked(true);
-
+        String phoneNumber = FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                         bottomNavigationView.getMenu().findItem(R.id.homefragment).setChecked(true);
                         break;
                     case R.id.cartfragment:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,new CartFragment()).addToBackStack(null).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,CartFragment.newInstance(phoneNumber)).addToBackStack(null).commit();
                         break;
                     case R.id.deliveryfragment:
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,new OrderFragment()).addToBackStack(null).commit();

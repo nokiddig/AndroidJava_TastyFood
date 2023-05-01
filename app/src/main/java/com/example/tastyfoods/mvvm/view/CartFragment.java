@@ -3,12 +3,22 @@ package com.example.tastyfoods.mvvm.view;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.tastyfoods.R;
+import com.example.tastyfoods.mvvm.adapter.CartAdapter;
+import com.example.tastyfoods.mvvm.model.CartDetail;
+import com.example.tastyfoods.mvvm.viewmodels.cartdetail.CartViewModel;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,18 +29,16 @@ public class CartFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM = "phoneNumber";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private CartAdapter cartAdapter;
+    private String phoneNumber;
 
     public CartFragment() {
         // Required empty public constructor
     }
 
-    /**
+    /*
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
@@ -39,11 +47,10 @@ public class CartFragment extends Fragment {
      * @return A new instance of fragment CartFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CartFragment newInstance(String param1, String param2) {
+    public static CartFragment newInstance(String phoneNumber) {
         CartFragment fragment = new CartFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_PARAM, phoneNumber);
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,8 +59,7 @@ public class CartFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            phoneNumber = getArguments().getString(ARG_PARAM);
         }
     }
 
@@ -61,6 +67,21 @@ public class CartFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cart, container, false);
+        View view =  inflater.inflate(R.layout.fragment_cart, container, false);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerViewCart);
+        TextView total = view.findViewById(R.id.textViewTotalMoney);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setHasFixedSize(true);
+
+        CartViewModel cartViewModel = new ViewModelProvider(this).get(CartViewModel.class);
+        cartViewModel.getCartDetails(phoneNumber).observe(getViewLifecycleOwner(), new Observer<List<CartDetail>>() {
+            @Override
+            public void onChanged(List<CartDetail> cartDetails) {
+                cartAdapter = new CartAdapter(getContext(), cartDetails);
+                recyclerView.setAdapter(cartAdapter);
+                total.setText(cartViewModel.getTotal() + "");
+            }
+        });
+        return view;
     }
 }

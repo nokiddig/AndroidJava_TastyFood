@@ -17,7 +17,7 @@ import com.example.tastyfoods.mvvm.model.Bill;
 import java.util.List;
 
 
-public class BillAdapter extends  RecyclerView.Adapter<BillAdapter.billViewAdapter>{
+public class BillAdapter extends RecyclerView.Adapter<BillAdapter.billViewAdapter>{
    private List<Bill> listBills;
    private Context mContext;
 
