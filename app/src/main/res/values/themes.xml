@@ -13,4 +13,31 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!--
+    Theme Style for Night Mode Switch
+-->
+    <style name="nightModeSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">#FF8000</item>
+        <item name="colorSwitchThumbNormal">#FFFFFF</item>
+        <item name="android:colorForeground">#FF8000</item>
+    </style>
+
+    <!--
+        Theme Style for Notifications Switch
+    -->
+    <style name="notificationSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">#FF8000</item>
+        <item name="colorSwitchThumbNormal">#FFFFFF</item>
+        <item name="android:colorForeground">#FF8000</item>
+    </style>
+
+    <!--
+    Theme Style for Notifications Switch
+-->
+    <style name="privateAccountSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">#FF8000</item>
+        <item name="colorSwitchThumbNormal">#FFFFFF</item>
+        <item name="android:colorForeground">#FF8000</item>
+    </style>
 </resources>
