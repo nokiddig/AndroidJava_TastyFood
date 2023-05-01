@@ -1,14 +1,26 @@
 package com.example.tastyfoods.mvvm.model;
 
 public class Feedback {
-    private  String content;
+    private  String content, phoneNumber;
     private int ratePoint, feedbackId, foodId;
 
-    public Feedback(String content, int ratePoint, int feedbackId, int foodId) {
+    public Feedback() {
+    }
+
+    public Feedback(String content, String phoneNumber, int ratePoint, int feedbackId, int foodId) {
         this.content = content;
+        this.phoneNumber = phoneNumber;
         this.ratePoint = ratePoint;
         this.feedbackId = feedbackId;
         this.foodId = foodId;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getContent() {

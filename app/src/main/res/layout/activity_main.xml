@@ -6,23 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btn_sign_out"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="152dp"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Hello World!"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <Button
-        android:id="@+id/btn_create"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="152dp"
-        android:text="Button"
-        app:layout_constraintStart_toEndOf="@+id/btn_sign_out"
-        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="410dp"
+        android:layout_height="639dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomnav"
+        android:layout_width="409dp"
+        android:layout_height="70dp"
+        android:background="#ff8000"
+        app:itemIconTint="@color/color_navigation"
+        app:itemTextColor="@color/color_navigation"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        app:menu="@menu/menu_navigation" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
