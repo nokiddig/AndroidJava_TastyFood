@@ -30,20 +30,18 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(context).inflate(R.layout.list_item_search, parent, false);
+        View v = LayoutInflater.from(context).inflate(R.layout.item_search, parent, false);
         return new MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ItemSearch itemSearch = itemSearchArrayList.get(position);
-        holder.image_item.setImageResource(itemSearch.image);
-        holder.name_item.setText(itemSearch.name);
-        holder.describe_item.setText(itemSearch.describe);
-        holder.price_item.setText(itemSearch.price);
-        holder.icon.setImageResource(itemSearch.button);
-
-
+        holder.imageView.setImageResource(itemSearch.image);
+        holder.textViewName.setText(itemSearch.name);
+        holder.textViewDescribe.setText(itemSearch.describe);
+        holder.textViewPrice.setText(itemSearch.price);
+        holder.imageButton.setImageResource(itemSearch.button);
     }
 
     @Override
@@ -55,21 +53,21 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         // đưa fragment_list_search vào
-        ImageView image_item;
-        TextView name_item;
-        TextView describe_item;
-        TextView price_item;
-        ImageButton icon;
+        ImageView imageView;
+        TextView textViewName;
+        TextView textViewDescribe;
+        TextView textViewPrice;
+        ImageButton imageButton;
 
 
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            image_item = itemView.findViewById(R.id.image_item);
-            name_item = itemView.findViewById(R.id.name_item);
-            describe_item = itemView.findViewById(R.id.describe_item);
-            price_item = itemView.findViewById(R.id.price_item);
-            icon = itemView.findViewById(R.id.icon);
+            imageView = itemView.findViewById(R.id.image_item);
+            textViewName = itemView.findViewById(R.id.name_item);
+            textViewDescribe = itemView.findViewById(R.id.describe_item);
+            textViewPrice = itemView.findViewById(R.id.price_item);
+            imageButton = itemView.findViewById(R.id.icon);
         }
     }
 }

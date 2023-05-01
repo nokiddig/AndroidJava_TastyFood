@@ -18,10 +18,10 @@ import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FragmentListSearch#newInstance} factory method to
+ * Use the {@link ListSearchFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentListSearch extends Fragment {
+public class ListSearchFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -40,7 +40,7 @@ public class FragmentListSearch extends Fragment {
     private int[] button;
     private RecyclerView recyclerView;
 
-    public FragmentListSearch() {
+    public ListSearchFragment() {
         // Required empty public constructor
     }
 
@@ -53,8 +53,8 @@ public class FragmentListSearch extends Fragment {
      * @return A new instance of fragment FragmentListSearch.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentListSearch newInstance(String param1, String param2) {
-        FragmentListSearch fragment = new FragmentListSearch();
+    public static ListSearchFragment newInstance(String param1, String param2) {
+        ListSearchFragment fragment = new ListSearchFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
