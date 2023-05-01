@@ -35,6 +35,7 @@ public class SplashActivity extends AppCompatActivity {
         }
         else {
             Intent intent=new Intent(this, MainActivity.class);
+            intent.putExtra("phoneNumber",user.getPhoneNumber());
             startActivity(intent);
         }
     }

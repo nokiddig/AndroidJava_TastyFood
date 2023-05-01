@@ -176,6 +176,7 @@ public class EnterOtpActivity extends AppCompatActivity {
     }
     private void gotoMainActivity() {
         Intent intent=new Intent(this, MainActivity.class);
+        intent.putExtra("phoneNumber",mPhoneNumber);
         startActivity(intent);
     }
 }
