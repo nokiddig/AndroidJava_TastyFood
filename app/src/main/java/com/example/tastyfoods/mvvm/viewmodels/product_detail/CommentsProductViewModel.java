@@ -15,9 +15,9 @@ import java.util.List;
 
 public class CommentsProductViewModel extends ViewModel {
     private final MutableLiveData<List<Feedback>> mFeedbacks = new MutableLiveData<>();
-    public LiveData<List<Feedback>> getFeedbacks() {
+    public LiveData<List<Feedback>> getFeedbacks(Food food) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("feedback").addSnapshotListener((value, error) -> {
+        db.collection("feedback").whereEqualTo("foodId", food.getFoodId()).addSnapshotListener((value, error) -> {
             try {
                 if (value != null) {
                     List<Feedback> feedbacks = new ArrayList<>();

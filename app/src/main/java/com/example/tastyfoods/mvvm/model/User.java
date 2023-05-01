@@ -8,6 +8,9 @@ public class User {
     private String phoneNumber, password, image;
     private Date birthday;
 
+    public User() {
+    }
+
     public User(String name, String address, int money, String phoneNumber, String password, String image, Date birthday) {
         this.name = name;
         this.address = address;
@@ -16,6 +19,16 @@ public class User {
         this.password = password;
         this.image = image;
         this.birthday = birthday;
+    }
+
+    public User(String name,String phoneNUmber,String password){
+        this.phoneNumber=phoneNUmber;
+        this.name=name;
+        this.password=password;
+        this.money=0;
+        this.image="";
+        this.birthday=null;
+        this.address="";
     }
 
     public String getName() {

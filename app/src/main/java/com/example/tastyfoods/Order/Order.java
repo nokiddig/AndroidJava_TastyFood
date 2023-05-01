@@ -8,8 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.tastyfoods.R;
-import com.example.tastyfoods.mvvm.viewmodels.Orders.delivery.DeliveryFragment;
-import com.example.tastyfoods.mvvm.viewmodels.Orders.deliveryhitory.HictoryFragment;
 
 public class Order extends AppCompatActivity {
 
