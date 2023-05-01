@@ -13,19 +13,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tastyfoods.R;
-import com.example.tastyfoods.mvvm.adapter.CategoryAdapter;
 import com.example.tastyfoods.mvvm.adapter.HomeProductAdapter;
-import com.example.tastyfoods.mvvm.model.Category;
 import com.example.tastyfoods.mvvm.model.Food;
-import com.example.tastyfoods.mvvm.viewmodels.home.CategoryViewModel;
-import com.example.tastyfoods.mvvm.viewmodels.home.HomeProductViewModel;
+import com.example.tastyfoods.mvvm.viewmodels.home.ProductViewModel;
 
 import java.util.List;
 
 public class HomeProductFragment extends Fragment {
     private RecyclerView recyclerView;
     private HomeProductAdapter homeProductAdapter;
-    private HomeProductViewModel homeProductViewModel;
+    private ProductViewModel productViewModel;
     private static HomeProductFragment instance;
 
     public static HomeProductFragment getInstance() {
@@ -44,8 +41,8 @@ public class HomeProductFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setHasFixedSize(true);
 
-        homeProductViewModel = new ViewModelProvider(this).get(HomeProductViewModel.class);
-        homeProductViewModel.getFoods().observe(getViewLifecycleOwner(), new Observer<List<Food>>() {
+        productViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
+        productViewModel.getFoods().observe(getViewLifecycleOwner(), new Observer<List<Food>>() {
             @Override
             public void onChanged(List<Food> foods) {
                 homeProductAdapter = new HomeProductAdapter(getContext(), foods);

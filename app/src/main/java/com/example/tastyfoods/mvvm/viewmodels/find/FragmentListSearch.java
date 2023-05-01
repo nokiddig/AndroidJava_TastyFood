@@ -38,7 +38,7 @@ public class FragmentListSearch extends Fragment {
     private String[] name;
     private String[] price;
     private int[] button;
-    private RecyclerView recyclerview;
+    private RecyclerView recyclerView;
 
     public FragmentListSearch() {
         // Required empty public constructor
@@ -85,13 +85,13 @@ public class FragmentListSearch extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        // khởi tạo 1 phương thức
+        // initialize the method
         dataInitialize();
-        recyclerview = view.findViewById(R.id.recyclerviewSearch);
-        recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerview.setHasFixedSize(true);
+        recyclerView = view.findViewById(R.id.recyclerviewSearch);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setHasFixedSize(true);
         SearchAdapter searchAdapter = new SearchAdapter(getContext(), itemSearchArrayList);
-        recyclerview.setAdapter(searchAdapter);
+        recyclerView.setAdapter(searchAdapter);
         searchAdapter.notifyDataSetChanged();
 
     }

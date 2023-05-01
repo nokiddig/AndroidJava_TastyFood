@@ -26,9 +26,11 @@
                 android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewCart"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
             <LinearLayout
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
@@ -41,31 +43,32 @@
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
+
                 <TextView
-                    android:layout_weight="1"
-                    android:textAlignment="textEnd"
-                    android:layout_marginEnd="15sp"
-                    android:textSize="15sp"
-                    android:textColor="@color/black"
-                     android:text="135,000 VND"
-                    android:textStyle="bold"
+                    android:id="@+id/textViewTotalMoney"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15sp"
+                    android:layout_weight="1"
+                    android:text="135,000 VND"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
             </LinearLayout>
+
             <androidx.appcompat.widget.AppCompatButton
-                android:layout_marginTop="25sp"
-                android:background="@drawable/bottom_c"
-                android:layout_marginEnd="25sp"
+                android:id="@+id/buttonCheckout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="25sp"
+                android:layout_marginTop="25sp"
+                android:layout_marginEnd="25sp"
+                android:background="@drawable/bottom_c"
                 android:text="Checkout"
                 android:textColor="@color/white"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
-
-
-
 
 </RelativeLayout>

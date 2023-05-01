@@ -3,7 +3,6 @@ package com.example.tastyfoods.mvvm.view.home;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,10 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.tastyfoods.R;
 import com.example.tastyfoods.mvvm.adapter.CategoryAdapter;
-import com.example.tastyfoods.mvvm.model.Category;
 import com.example.tastyfoods.mvvm.viewmodels.home.CategoryViewModel;
-
-import java.util.List;
 
 public class HomeCategoryFragment extends Fragment {
 

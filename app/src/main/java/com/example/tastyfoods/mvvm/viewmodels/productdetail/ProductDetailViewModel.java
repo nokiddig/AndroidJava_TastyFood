@@ -1,19 +1,14 @@
-package com.example.tastyfoods.mvvm.viewmodels.product_detail;
+package com.example.tastyfoods.mvvm.viewmodels.productdetail;
 
-import androidx.annotation.Nullable;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import com.example.tastyfoods.mvvm.model.Feedback;
+
 import com.example.tastyfoods.mvvm.model.Food;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ProductDetailViewModel extends ViewModel {
 

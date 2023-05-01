@@ -3,10 +3,9 @@ package com.example.tastyfoods.mvvm.model;
 import java.util.Date;
 
 public class Bill {
-    private  int billId;
+    private  int billId, totalMoney;
     private boolean status;
     private Date dateTime;
-    private int totalMoney;
     private String phoneNumber;
 
     public Bill() {

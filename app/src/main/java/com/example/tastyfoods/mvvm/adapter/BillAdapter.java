@@ -17,7 +17,7 @@ import com.example.tastyfoods.mvvm.model.Bill;
 import java.util.List;
 
 
-public class BillAdapter extends  RecyclerView.Adapter<BillAdapter.billViewAdapter>{
+public class BillAdapter extends RecyclerView.Adapter<BillAdapter.billViewAdapter>{
    private List<Bill> listBills;
    private Context mContext;
 
@@ -61,7 +61,7 @@ public class BillAdapter extends  RecyclerView.Adapter<BillAdapter.billViewAdapt
         return 0;
     }
 
-    public class billViewAdapter extends RecyclerView.ViewHolder{
+    public static class billViewAdapter extends RecyclerView.ViewHolder{
         private TextView  txtTotal,  txtDateTime;
         private Button btnReset;
         public billViewAdapter(@NonNull View itemView) {

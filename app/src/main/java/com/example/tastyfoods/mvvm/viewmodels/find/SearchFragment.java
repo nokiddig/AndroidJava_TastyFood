@@ -13,11 +13,9 @@ import com.example.tastyfoods.R;
 
 public class SearchFragment extends Fragment {
 
-// trả về 1 view
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Thổi phồng bố cục cho đoạn này
         return inflater.inflate(R.layout.fragment_search, container, false);
     }
 }

@@ -4,10 +4,9 @@ import java.io.Serializable;
 
 public class Food implements Serializable {
 
-    private int foodId;
+    private int foodId, price, categoryId;
     private String name, description, image;
     private double ratePoint;
-    private int price, categoryId;
 
     public Food(int foodId, String name, String description, String image, double ratePoint, int price, int categoryId) {
         this.foodId = foodId;

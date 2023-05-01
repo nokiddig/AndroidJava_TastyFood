@@ -18,7 +18,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        Handler handler=new Handler();
+        Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -28,14 +28,14 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void nextActivity() {
-        FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
-        if(user==null){
-            Intent intent=new Intent(this,LoginActivity.class);
-            startActivity(intent);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        Intent intent;
+        if(user == null){
+            intent = new Intent(this, LoginActivity.class);
         }
         else {
-            Intent intent=new Intent(this, MainActivity.class);
-            startActivity(intent);
+            intent = new Intent(this, MainActivity.class);
         }
+        startActivity(intent);
     }
 }

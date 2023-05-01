@@ -1,10 +1,9 @@
-package com.example.tastyfoods.mvvm.viewmodels.product_detail;
+package com.example.tastyfoods.mvvm.viewmodels.productdetail;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.tastyfoods.mvvm.model.Category;
 import com.example.tastyfoods.mvvm.model.Feedback;
 import com.example.tastyfoods.mvvm.model.Food;
 import com.google.firebase.firestore.FirebaseFirestore;

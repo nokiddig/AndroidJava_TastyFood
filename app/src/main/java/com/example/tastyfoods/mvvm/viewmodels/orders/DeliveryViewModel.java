@@ -4,30 +4,26 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.tastyfoods.mvvm.view.orders.Delivery;
+import com.example.tastyfoods.mvvm.view.orders.DeliveryFragment;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DeliveryViewModel extends ViewModel {
-    private MutableLiveData<List<Delivery>> mDelivery = new MutableLiveData<>();
+    private MutableLiveData<List<DeliveryFragment>> mDelivery = new MutableLiveData<>();
 
 
 
-    private LiveData<List<Delivery>> getDelivery()
+    private LiveData<List<DeliveryFragment>> getDelivery()
     {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        List<Delivery>deliveries = new ArrayList<>();
+        List<DeliveryFragment>deliveries = new ArrayList<>();
         CollectionReference billCollection = db.collection("bill");
-        CollectionReference billDetailConllection = db.collection("billDetail");
+        CollectionReference billDetailCollection = db.collection("billDetail");
         CollectionReference foodCollection = db.collection("food");
         CollectionReference userCollection = db.collection("register");
-
-
 
         return mDelivery;
     }

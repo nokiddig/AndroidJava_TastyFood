@@ -1,14 +1,14 @@
 package com.example.tastyfoods.mvvm.model;
 
 public class HomeSliderItem {
-    private final int image;
+    private final int IMAGE;
 
-    public HomeSliderItem(int image) {
-        this.image = image;
+    public HomeSliderItem(int IMAGE) {
+        this.IMAGE = IMAGE;
     }
 
-    public int getImage() {
-        return image;
+    public int getIMAGE() {
+        return IMAGE;
     }
 
 }
