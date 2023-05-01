@@ -1,5 +1,7 @@
 package com.example.tastyfoods.mvvm.view.orders;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +26,7 @@ public class OrderFragment extends Fragment {
         btnHitory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                btnHitory.setBackground(new ColorDrawable(Color.rgb(255, 204, 153)));
                 FragmentManager fragmentManager = getChildFragmentManager();
                 FragmentTransaction fragmentTransaction =getChildFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_main, new HitoryFragment());
@@ -34,8 +37,10 @@ public class OrderFragment extends Fragment {
         btnDelivery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                btnDelivery.setBackground(new ColorDrawable(Color.rgb(255, 204, 153)));
                 FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-                fragmentTransaction.add(R.id.fragment_main, new Delivery());
+                fragmentTransaction.replace(R.id.fragment_main, new Delivery());
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
         });
