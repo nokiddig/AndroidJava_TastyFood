@@ -14,7 +14,7 @@
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:text="Danh mục"
         android:textColor="@color/orange"
         android:textSize="20sp"

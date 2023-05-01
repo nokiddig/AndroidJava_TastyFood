@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mvvm.viewmodels.find.SearchFragment">
+    tools:context=".mvvm.view.search.SearchFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="wrap_content"
-        android:layout_height="179dp">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <ImageButton
-            android:id="@+id/image_btn_exit"
+            android:id="@+id/imageButtonBack"
             android:layout_width="57dp"
 
             android:layout_height="58dp"
             android:layout_marginTop="2dp"
             android:background="#ffffff"
-            android:src="@drawable/baseline_arrow_back_ios_new_24"></ImageButton>
+            android:src="@drawable/baseline_arrow_back_ios_new_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></ImageButton>
 
         <EditText
 
@@ -26,49 +31,21 @@
             android:layout_height="58dp"
             android:layout_marginTop="2dp"
 
-            android:layout_toRightOf="@+id/image_btn_exit"
             android:background="#D8D8CD"
-            android:hint="Search" />
+            android:hint="Search"
+            app:layout_constraintLeft_toRightOf="@+id/imageButtonBack"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <FrameLayout
+            android:id="@+id/frameLayoutListSearch"
+            android:layout_width="404dp"
+            android:layout_height="669dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageButtonBack">
+        </FrameLayout>
 
-            android:id="@+id/btn_humberger"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/image_btn_exit"
-            android:layout_marginTop="42dp"
-            android:backgroundTint="#D8D8CD"
-            android:text="humberger"
-            android:textColor="#000"
-            android:textSize="13dp" />
-
-        <Button
-            android:id="@+id/btn_drink"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/image_btn_exit"
-            android:layout_marginLeft="14dp"
-            android:layout_marginTop="42dp"
-            android:layout_toRightOf="@+id/btn_humberger"
-            android:backgroundTint="#D8D8CD"
-            android:text="drink"
-
-            android:textColor="#000"
-            android:textSize="13dp" />
-
-        <Button
-            android:id="@+id/btn_pizza"
-            android:layout_width="84dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/image_btn_exit"
-            android:layout_marginLeft="13dp"
-            android:layout_marginTop="43dp"
-            android:layout_toRightOf="@+id/btn_drink"
-
-            android:backgroundTint="#D8D8CD"
-            android:text="pizza"
-            android:textColor="#000"
-            android:textSize="13dp" />
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

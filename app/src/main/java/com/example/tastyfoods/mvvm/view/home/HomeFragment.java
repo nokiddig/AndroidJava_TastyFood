@@ -33,7 +33,7 @@ public class HomeFragment extends Fragment {
         transaction2.commit();
 
         FragmentTransaction transaction3 = getChildFragmentManager().beginTransaction();
-        transaction3.add(R.id.layoutBotom, productFragment);
+        transaction3.add(R.id.layoutBottom, productFragment);
         transaction3.commit();
         return view;
     }
