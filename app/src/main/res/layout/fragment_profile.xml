@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".mvvm.view.profile.ProfileFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,8 +16,9 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/back_button"
-            android:padding="14dp"/>
+            android:layout_marginStart="-158dp"
+            android:padding="14dp"
+            android:src="@drawable/back_button" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -26,6 +28,19 @@
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/buttonLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="350dp"
+            android:clickable="true"
+            android:outlineAmbientShadowColor="#00FFFFFF"
+            android:outlineSpotShadowColor="#00FFFFFF"
+            android:src="@drawable/log_out"
+            android:tint="@color/black"
+            app:backgroundTint="#00FFFFFF"
+            app:rippleColor="#00E4DFDF" />
     </RelativeLayout>
 
     <ScrollView
@@ -38,13 +53,15 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/imageViewAvatar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/user"/>
+                android:src="@drawable/user" />
 
             <TextView
+                android:id="@+id/textViewUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -52,7 +69,7 @@
                 android:text="#UserName"
                 android:textColor="#000000"
                 android:textSize="22sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -63,8 +80,9 @@
                 android:textSize="12sp"/>
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonChangeAvatar"
                 android:layout_width="wrap_content"
-                android:layout_height="48dp"
+                android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:background="#FF8000"
@@ -79,10 +97,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:orientation="vertical"
                 android:paddingEnd="15dp"
-                android:background="@color/light_orange">
+                android:background="#Ff8000">
                 <!--
                                 Name
                 -->
@@ -107,12 +125,13 @@
                         android:layout_toEndOf="@+id/nameIcon"/>
 
                     <EditText
+                        android:id="@+id/editTextFullName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:text="Nguyen Xuan Loc"
-                        android:textColor="#000000"/>
+                        android:textColor="#000000" />
 
                 </RelativeLayout>
                 <!--
@@ -171,13 +190,14 @@
                         android:textStyle="bold"
                         android:layout_toEndOf="@+id/addressIcon"/>
 
-                    <TextView
+                    <EditText
+                        android:id="@+id/editTextAddress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:text="Phuc Yen - Vinh Phuc"
-                        android:textColor="#000000"/>
+                        android:textColor="#000000" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -202,12 +222,13 @@
                         android:layout_toEndOf="@+id/phoneNoIcon"/>
 
                     <TextView
+                        android:id="@+id/textViewPhoneNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:text="0862206853"
-                        android:textColor="#000000"/>
+                        android:textColor="#000000" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -223,13 +244,14 @@
                         android:padding="12dp"/>
 
                     <TextView
+                        android:id="@+id/textViewChangeYourPass"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/passwordIcon"
                         android:text="Change your password"
                         android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:layout_toEndOf="@+id/passwordIcon"/>
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -270,6 +292,7 @@
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonSave"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
@@ -279,7 +302,7 @@
                 android:paddingEnd="30dp"
                 android:text="Save your changes"
                 android:textAllCaps="false"
-                android:textColor="#4A148C"/>
+                android:textColor="#4A148C" />
 
         </LinearLayout>
     </ScrollView>

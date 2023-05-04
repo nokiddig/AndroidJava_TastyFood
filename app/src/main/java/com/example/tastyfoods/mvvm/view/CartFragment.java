@@ -79,7 +79,12 @@ public class CartFragment extends Fragment {
             public void onChanged(List<CartDetail> cartDetails) {
                 cartAdapter = new CartAdapter(getContext(), cartDetails);
                 recyclerView.setAdapter(cartAdapter);
-                total.setText(cartViewModel.getTotal() + "");
+            }
+        });
+        cartViewModel.getTotal().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                total.setText(String.valueOf(integer));
             }
         });
         return view;

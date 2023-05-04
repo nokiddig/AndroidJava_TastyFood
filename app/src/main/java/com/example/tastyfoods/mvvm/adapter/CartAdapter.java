@@ -42,18 +42,17 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CartDetail cartDetail = mCart.get(position);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        Log.d("Food", cartDetail.getFoodId() + " done      --------------------");
         db.collection("food").document(String.valueOf(cartDetail.getFoodId())).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 Food tmp = documentSnapshot.toObject(Food.class);
                 Glide.with(mContext).load(tmp.getImage()).into(holder.imageViewProduct);
-                holder.textViewPrice.setText(tmp.getPrice() + "");
+                holder.textViewPrice.setText(String.valueOf(tmp.getPrice()));
                 holder.textViewName.setText(tmp.getName());
             }
         });
-        holder.textViewAmount.setText(cartDetail.getAmount() + "");
-        holder.textViewTotal.setText(cartDetail.getMoney() + "");
+        holder.textViewAmount.setText(String.valueOf(cartDetail.getAmount()));
+        holder.textViewTotal.setText(String.valueOf(cartDetail.getMoney()));
     }
 
     @Override
@@ -65,6 +64,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
 
         ImageView imageViewProduct;
         TextView textViewName, textViewAmount, textViewPrice, textViewTotal;
+        ImageView imageViewMinus, imageViewAdd;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -73,6 +73,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
             textViewAmount = itemView.findViewById(R.id.textViewAmount);
             textViewPrice = itemView.findViewById(R.id.textViewPrice);
             textViewTotal = itemView.findViewById(R.id.textViewSum);
+            imageViewMinus = itemView.findViewById(R.id.minus);
+            imageViewAdd = itemView.findViewById(R.id.add);
         }
     }
 

@@ -38,13 +38,12 @@
 
         <FrameLayout
             android:id="@+id/frameLayoutListSearch"
-            android:layout_width="404dp"
+            android:layout_width="410dp"
             android:layout_height="669dp"
             android:layout_marginStart="1dp"
             android:layout_marginTop="1dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButtonBack">
-        </FrameLayout>
+            app:layout_constraintTop_toBottomOf="@+id/imageButtonBack"></FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

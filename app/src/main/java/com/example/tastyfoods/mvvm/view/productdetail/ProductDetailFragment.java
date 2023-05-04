@@ -113,7 +113,10 @@ public class ProductDetailFragment extends Fragment {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getParentFragmentManager().popBackStack("productDetail", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                if (getParentFragmentManager().getBackStackEntryCount() == 0) {
+                    return;
+                }
+                getParentFragmentManager().popBackStack();
             }
         });
         return view;

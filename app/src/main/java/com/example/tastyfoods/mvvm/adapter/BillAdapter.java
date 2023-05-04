@@ -19,15 +19,7 @@ import java.util.List;
 
 public class BillAdapter extends RecyclerView.Adapter<BillAdapter.billViewAdapter>{
    private List<Bill> listBills;
-   private Context mContext;
-
-    public List<Bill> getListBills() {
-        return listBills;
-    }
-
-    public void setListBills(List<Bill> listBills) {
-        this.listBills = listBills;
-    }
+   private final Context mContext;
 
     public BillAdapter(List<Bill> listBills, Context mContext) {
         this.listBills = listBills;

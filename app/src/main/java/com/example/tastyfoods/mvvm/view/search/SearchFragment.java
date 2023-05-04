@@ -21,13 +21,16 @@ public class SearchFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
 
+        Bundle args = getArguments();
         FragmentManager fragmentManager = getParentFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.frameLayoutListSearch, new ListSearchFragment()).commit();
+        fragmentManager.beginTransaction().replace(R.id.frameLayoutListSearch, ListSearchFragment.newInstance(args.getString("search"))).commit();
         ImageButton imageButtonBack = view.findViewById(R.id.imageButtonBack);
         imageButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentManager.popBackStack("search", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                getParentFragmentManager().popBackStack();
+                getParentFragmentManager().popBackStack();
+                getParentFragmentManager().popBackStack();
             }
         });
 
