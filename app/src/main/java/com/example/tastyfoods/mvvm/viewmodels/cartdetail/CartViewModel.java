@@ -15,7 +15,7 @@ import java.util.List;
 
 public class CartViewModel extends ViewModel {
     private MutableLiveData<List<CartDetail>> mCart = new MutableLiveData<>();
-    private int total = 0;
+    private MutableLiveData<Integer> total = new MutableLiveData<>(0);
 
     public MutableLiveData<List<CartDetail>> getCartDetails(String phoneNumber) {
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
@@ -23,12 +23,14 @@ public class CartViewModel extends ViewModel {
             try {
                 if (value != null) {
                     List<CartDetail> cartDetails = new ArrayList<>();
+                    int sum = 0;
                     for (QueryDocumentSnapshot doc : value) {
                         CartDetail cartDetail = doc.toObject(CartDetail.class);
                         cartDetails.add(cartDetail);
-                        total += cartDetail.getMoney();
+                        sum += cartDetail.getMoney();
                         Log.d("Sy", cartDetail.getPhoneNumber() + " done      --------------------");
                     }
+                    total.postValue(sum);
                     mCart.postValue(cartDetails);
                 }
             } catch (Exception e) {
@@ -38,7 +40,7 @@ public class CartViewModel extends ViewModel {
         return mCart;
     }
 
-    public int getTotal() {
+    public MutableLiveData<Integer> getTotal() {
         return total;
     }
 }

@@ -70,7 +70,7 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         this.init(view);
-        ProfileViewModel profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);;
+        ProfileViewModel profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         profileViewModel.getUser(mParam1).observe(getViewLifecycleOwner(), new Observer<User>() {
             @Override
             public void onChanged(User user) {

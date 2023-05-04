@@ -11,7 +11,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.tastyfoods.R;
+import com.example.tastyfoods.mvvm.model.Food;
 import com.example.tastyfoods.mvvm.model.ItemSearch;
 
 import java.util.ArrayList;
@@ -19,10 +23,10 @@ import java.util.ArrayList;
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHolder>{
 
     Context context;
-    ArrayList<ItemSearch> itemSearchArrayList;
+    ArrayList<Food> itemSearchArrayList;
 
 
-    public SearchAdapter(Context context, ArrayList<ItemSearch> itemSearchArrayList) {
+    public SearchAdapter(Context context, ArrayList<Food> itemSearchArrayList) {
         this.context = context;
         this.itemSearchArrayList = itemSearchArrayList;
     }
@@ -37,12 +41,17 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        ItemSearch itemSearch = itemSearchArrayList.get(position);
-        holder.imageView.setImageResource(itemSearch.getImage());
-        holder.textViewName.setText(itemSearch.getName());
-        holder.textViewDescribe.setText(itemSearch.getDescribe());
-        holder.textViewPrice.setText(itemSearch.getPrice());
-        holder.imageButton.setImageResource(itemSearch.getButton());
+        Food itemSearch = itemSearchArrayList.get(position);
+        holder.textViewName.setText(String.valueOf(itemSearch.getName()));
+        holder.textViewDescribe.setText(itemSearch.getDescription().substring(0, Math.min(itemSearch.getDescription().length(), 100)).concat("..."));
+        holder.textViewPrice.setText(String.valueOf(itemSearch.getPrice()));
+        holder.imageButton.setImageResource(R.drawable.baseline_control_point_24);
+        Glide.with(context)
+                .load(itemSearch.getImage())
+                .centerCrop()
+                .placeholder(R.drawable.anh)
+                .apply(RequestOptions.bitmapTransform(new CircleCrop()))
+                .into(holder.imageView);
     }
 
     @Override

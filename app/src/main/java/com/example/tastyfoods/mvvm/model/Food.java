@@ -4,21 +4,30 @@ import java.io.Serializable;
 
 public class Food implements Serializable {
 
-    private int foodId, price, categoryId;
+    private int foodId, price, categoryId, sales;
     private String name, description, image;
     private double ratePoint;
 
-    public Food(int foodId, String name, String description, String image, double ratePoint, int price, int categoryId) {
+    public Food(int foodId, int price, int categoryId, int sales, String name, String description, String image, double ratePoint) {
         this.foodId = foodId;
+        this.price = price;
+        this.categoryId = categoryId;
+        this.sales = sales;
         this.name = name;
         this.description = description;
         this.image = image;
         this.ratePoint = ratePoint;
-        this.price = price;
-        this.categoryId = categoryId;
     }
 
     public Food() {
+    }
+
+    public int getSales() {
+        return sales;
+    }
+
+    public void setSales(int sales) {
+        this.sales = sales;
     }
 
     public int getFoodId() {

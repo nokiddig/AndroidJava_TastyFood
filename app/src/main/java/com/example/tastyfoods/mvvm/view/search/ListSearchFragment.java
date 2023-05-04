@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,8 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tastyfoods.R;
+import com.example.tastyfoods.mvvm.adapter.CategoryAdapter;
+import com.example.tastyfoods.mvvm.model.Food;
 import com.example.tastyfoods.mvvm.model.ItemSearch;
 import com.example.tastyfoods.mvvm.adapter.SearchAdapter;
+import com.example.tastyfoods.mvvm.viewmodels.search.SearchViewModel;
 
 import java.util.ArrayList;
 
@@ -27,12 +31,10 @@ public class ListSearchFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM1 = "name";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
-    private String mParam2;
     private ArrayList<ItemSearch> itemSearchArrayList;
     private int[] image;
     private String[] describe;
@@ -51,15 +53,13 @@ public class ListSearchFragment extends Fragment {
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment FragmentListSearch.
      */
     // TODO: Rename and change types and number of parameters
-    public static ListSearchFragment newInstance(String param1, String param2) {
+    public static ListSearchFragment newInstance(String param1) {
         ListSearchFragment fragment = new ListSearchFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -69,7 +69,6 @@ public class ListSearchFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -86,15 +85,17 @@ public class ListSearchFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
         // initialize the method
         dataInitialize();
         recyclerView = view.findViewById(R.id.recyclerviewSearch);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
-        SearchAdapter searchAdapter = new SearchAdapter(getContext(), itemSearchArrayList);
-        recyclerView.setAdapter(searchAdapter);
-        searchAdapter.notifyDataSetChanged();
+
+        SearchViewModel searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
+        searchViewModel.findByName(mParam1).observe(getViewLifecycleOwner(), foods -> {
+            SearchAdapter searchAdapter = new SearchAdapter(getContext(), (ArrayList<Food>) foods);
+            recyclerView.setAdapter(searchAdapter);
+        });
 
     }
 

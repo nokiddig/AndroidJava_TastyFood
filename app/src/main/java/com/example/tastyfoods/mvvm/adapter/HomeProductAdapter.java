@@ -15,8 +15,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.tastyfoods.R;
+import com.example.tastyfoods.mvvm.model.CartDetail;
 import com.example.tastyfoods.mvvm.model.Food;
 import com.example.tastyfoods.mvvm.view.productdetail.ProductDetailFragment;
+import com.example.tastyfoods.mvvm.viewmodels.home.ProductViewModel;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import androidx.fragment.app.FragmentManager;
 
 import java.util.List;
@@ -40,6 +49,7 @@ public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             Food food = mFoods.get(position);
+            ProductViewModel productViewModel = new ProductViewModel();
 
             holder.textViewName.setText(food.getName());
             holder.textViewPrice.setText(food.getPrice() + "đ");
@@ -67,12 +77,50 @@ public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.
                             .commit();
                 }
             });
-//            holder.buttonAdd.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    // add to cart
-//                }
-//            });
+            holder.buttonAdd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // add to cart
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                    db.collection("cartDetail")
+                        .whereEqualTo("foodId", food.getFoodId())
+                        .limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                            @Override
+                            public void onSuccess(QuerySnapshot querySnapshot) {
+                                long maxCartDetailId = 1;
+                                if (!querySnapshot.isEmpty()) {
+                                    DocumentSnapshot documentSnapshot = querySnapshot.getDocuments().get(0);
+                                    CartDetail cartDetail = documentSnapshot.toObject(CartDetail.class);
+                                    cartDetail.setAmount(cartDetail.getAmount()+1);
+                                    cartDetail.setMoney(cartDetail.getMoney()+ food.getPrice());
+                                    db.collection("cartDetail").document(documentSnapshot.getId())
+                                            .set(cartDetail);
+                                }
+                                else {
+                                    db.collection("cartDetail")
+                                        .orderBy("cartDetailId", Query.Direction.DESCENDING)
+                                        .limit(1)
+                                        .get()
+                                        .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onSuccess(QuerySnapshot querySnapshot) {
+                                                long maxCartDetailId = 1;
+                                                if (!querySnapshot.isEmpty()) {
+                                                    DocumentSnapshot documentSnapshot = querySnapshot.getDocuments().get(0);
+                                                    maxCartDetailId = documentSnapshot.getLong("cartDetailId") + 1;
+                                                }
+                                                CartDetail cartDetail = new CartDetail((int) maxCartDetailId, food.getFoodId(), food.getPrice(),
+                                                        1, FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+                                                db.collection("cartDetail").document(String.valueOf(maxCartDetailId))
+                                                        .set(cartDetail);
+                                            }
+                                        });
+                                }
+
+                            }
+                        });
+                }
+            });
         }
 
         @Override
@@ -91,7 +139,7 @@ public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.
                 imageViewProduct = itemView.findViewById(R.id.productImage);
                 textViewName = itemView.findViewById(R.id.textViewNameProduct);
                 textViewPrice = itemView.findViewById(R.id.textviewPrice);
-                //buttonAdd = itemView.findViewById(R.id.imageButton);
+                buttonAdd = itemView.findViewById(R.id.imageButton);
             }
         }
 

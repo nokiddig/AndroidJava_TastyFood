@@ -46,6 +46,7 @@ public class HomeHeaderFragment extends Fragment {
                 SearchFragment searchFragment = new SearchFragment();
                 searchFragment.setArguments(bundle);
 
+
                 // replace this Fragment to ProductDetailFragment
                 FragmentManager fragmentManager = getParentFragmentManager();
                 fragmentManager.beginTransaction()
