@@ -28,7 +28,6 @@ public class CartViewModel extends ViewModel {
                         CartDetail cartDetail = doc.toObject(CartDetail.class);
                         cartDetails.add(cartDetail);
                         sum += cartDetail.getMoney();
-                        Log.d("Sy", cartDetail.getPhoneNumber() + " done      --------------------");
                     }
                     total.postValue(sum);
                     mCart.postValue(cartDetails);

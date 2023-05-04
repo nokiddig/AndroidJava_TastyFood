@@ -75,4 +75,6 @@ dependencies {
     // Java language implementation
     implementation "androidx.navigation:navigation-fragment:2.5.3"
     implementation "androidx.navigation:navigation-ui:2.5.3"
+    //bo cong vien anh
+    implementation 'jp.wasabeef:glide-transformations:4.3.0'
 }

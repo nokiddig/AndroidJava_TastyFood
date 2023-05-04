@@ -58,14 +58,7 @@ public class HomeHeaderFragment extends Fragment {
                 return false;
             }
         });
-
-        this.showHelloUser();
         return view;
-    }
-
-    private void showHelloUser() {
-        String hello = "Xin chào " + Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getDisplayName();
-        textViewHello.setText(hello);
     }
 
     private void init(View view) {
