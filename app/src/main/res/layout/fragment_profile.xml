@@ -130,9 +130,6 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:editable="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
                         android:text="Nguyen Xuan Loc"
                         android:textColor="#000000" />
 
@@ -199,9 +196,6 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:editable="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
                         android:text="Phuc Yen - Vinh Phuc"
                         android:textColor="#000000" />
                 </RelativeLayout>
