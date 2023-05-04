@@ -91,6 +91,15 @@ public class ProfileFragment extends Fragment {
                 }
             }
         });
+        buttonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                User newUser = new User();
+                newUser.setName(editTextFullName.getText().toString());
+                newUser.setAddress(editTextAddress.getText().toString());
+                profileViewModel.updateUser(newUser);
+            }
+        });
 
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
