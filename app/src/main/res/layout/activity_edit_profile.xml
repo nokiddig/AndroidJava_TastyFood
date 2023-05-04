@@ -82,7 +82,7 @@
                 android:layout_marginTop="40dp"
                 android:orientation="vertical"
                 android:paddingEnd="15dp"
-                android:background="#Ff8000">
+                android:background="@color/light_orange">
                 <!--
                                 Name
                 -->
@@ -112,10 +112,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:text="Nguyen Xuan Loc"
-                        android:textColor="#000000"
-                        android:editable="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"/>
+                        android:textColor="#000000"/>
 
                 </RelativeLayout>
                 <!--
@@ -174,16 +171,13 @@
                         android:textStyle="bold"
                         android:layout_toEndOf="@+id/addressIcon"/>
 
-                    <EditText
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:text="Phuc Yen - Vinh Phuc"
-                        android:textColor="#000000"
-                        android:editable="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"/>
+                        android:textColor="#000000"/>
                 </RelativeLayout>
 
                 <RelativeLayout
