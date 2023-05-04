@@ -48,7 +48,8 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.billViewAdapte
         {
             return;
         }
-        holder.txtDateTime.setText(bill.getDateTime().toString());
+        holder.txtDateTime.setText(String.valueOf(bill.getDateTime()));
+
         holder.txtTotal.setText(String.valueOf(bill.getTotalMoney()));
     }
 

@@ -27,16 +27,12 @@ public class Bill {
         this.billId = billId;
     }
 
+    public int getTotalMoney() {
+        return totalMoney;
+    }
+
     public void setTotalMoney(int totalMoney) {
         this.totalMoney = totalMoney;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public boolean isStatus() {
@@ -47,14 +43,6 @@ public class Bill {
         this.status = status;
     }
 
-    public int getBillID() {
-        return billId;
-    }
-
-    public void setBillID(int billId) {
-        this.billId = billId;
-    }
-
     public Date getDateTime() {
         return dateTime;
     }
@@ -63,8 +51,11 @@ public class Bill {
         this.dateTime = dateTime;
     }
 
-    public double getTotalMoney() {
-        return totalMoney;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }

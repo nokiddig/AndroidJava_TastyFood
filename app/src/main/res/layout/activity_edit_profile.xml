@@ -82,7 +82,7 @@
                 android:layout_marginTop="40dp"
                 android:orientation="vertical"
                 android:paddingEnd="15dp"
-                android:background="#FF80000">
+                android:background="@color/light_orange">
                 <!--
                                 Name
                 -->

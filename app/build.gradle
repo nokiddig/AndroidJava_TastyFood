@@ -42,6 +42,8 @@ dependencies {
 
     implementation "com.mapbox.navigation:android:2.10.4"
     implementation 'com.mapbox.maps:android:10.12.2'
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
@@ -68,4 +70,9 @@ dependencies {
     //slider
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
     implementation 'com.makeramen:roundedimageview:2.3.0'
+
+    //Todo: Navigation android
+    // Java language implementation
+    implementation "androidx.navigation:navigation-fragment:2.5.3"
+    implementation "androidx.navigation:navigation-ui:2.5.3"
 }
