@@ -16,7 +16,7 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.tastyfoods.R;
 import com.example.tastyfoods.mvvm.model.Food;
-import com.example.tastyfoods.mvvm.model.ItemSearch;
+import com.example.tastyfoods.mvvm.viewmodels.cartdetail.CartViewModel;
 
 import java.util.ArrayList;
 
@@ -52,6 +52,10 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
                 .placeholder(R.drawable.anh)
                 .apply(RequestOptions.bitmapTransform(new CircleCrop()))
                 .into(holder.imageView);
+        holder.imageButton.setOnClickListener(view -> {
+            // add to cart
+            new CartViewModel().addToCart(itemSearch);
+        });
     }
 
     @Override

@@ -1,38 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/white"
     tools:context=".mvvm.view.home.HomeFragment">
 
-    <FrameLayout
-        android:id="@+id/layoutTop"
-        android:layout_width="410dp"
-        android:layout_height="260dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
 
-    </FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutTop"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6.5">
+            <TextView
+                android:id="@+id/textViewXinChao"
+                android:layout_width="199dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="20dp"
+                android:text="@string/Hello"
+                android:textColor="@color/drank_orange"
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <FrameLayout
-        android:id="@+id/layoutCenter"
-        android:layout_width="410dp"
-        android:layout_height="210dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutTop">
+            <TextView
+                android:id="@+id/textViewOrder"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="20dp"
+                android:text="Đặt món ngay!"
+                android:textColor="@color/drank_orange"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewXinChao" />
 
-    </FrameLayout>
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="60dp"
+                app:circularflow_radiusInDP="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/home_search_border">
+            </androidx.appcompat.widget.SearchView>
 
-    <FrameLayout
-        android:id="@+id/layoutBottom"
-        android:layout_width="410dp"
-        android:layout_height="300dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutCenter">
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchView"
+                tools:ignore="MissingConstraints"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </FrameLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutCenter"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4.5">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="20dp"
+                android:text="Danh mục"
+                android:textColor="@color/orange"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                tools:listitem="" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutBottom"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5">
+
+            <TextView
+                android:id="@+id/textViewProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Tất cả"
+                android:textColor="@color/orange"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_conversion_absoluteHeight="30dp"
+                tools:layout_conversion_absoluteWidth="100dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_product"
+                android:layout_width="wrap_content"
+                android:minHeight="160dp"
+                android:maxHeight="190dp"
+                android:layout_height="180dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewProduct"
+                tools:listitem="" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

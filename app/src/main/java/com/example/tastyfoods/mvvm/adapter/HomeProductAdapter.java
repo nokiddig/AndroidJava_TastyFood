@@ -44,37 +44,31 @@ public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.
             Food food = mFoods.get(position);
 
             holder.textViewName.setText(food.getName());
-            holder.textViewPrice.setText(food.getPrice() + "đ");
+            holder.textViewPrice.setText(String.valueOf(food.getPrice()).concat("đ"));
 
             Glide.with(CONTEXT)
                     .load(food.getImage())
                     .centerCrop()
                     .placeholder(R.drawable.anh)
                     .into(holder.imageViewProduct);
-            holder.imageViewProduct.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    // show product detail
-                    // send data to Fragment ProductDetailFragment
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("food", food);
-                    ProductDetailFragment productDetailFragment = new ProductDetailFragment();
-                    productDetailFragment.setArguments(bundle);
+            holder.imageViewProduct.setOnClickListener(view -> {
+                // show product detail
+                // send data to Fragment ProductDetailFragment
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("food", food);
+                ProductDetailFragment productDetailFragment = new ProductDetailFragment();
+                productDetailFragment.setArguments(bundle);
 
-                    // replace this Fragment to ProductDetailFragment
-                    FragmentManager fragmentManager = ((AppCompatActivity) CONTEXT).getSupportFragmentManager();
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.frameLayout, productDetailFragment)
-                            .addToBackStack("productDetail")
-                            .commit();
-                }
+                // replace this Fragment to ProductDetailFragment
+                FragmentManager fragmentManager = ((AppCompatActivity) CONTEXT).getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, productDetailFragment)
+                        .addToBackStack("productDetail")
+                        .commit();
             });
-            holder.buttonAdd.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    // add to cart
-                    new CartViewModel().addToCart(food);
-                }
+            holder.buttonAdd.setOnClickListener(view -> {
+                // add to cart
+                new CartViewModel().addToCart(food);
             });
         }
 
