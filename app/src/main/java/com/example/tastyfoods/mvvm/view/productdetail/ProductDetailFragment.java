@@ -55,48 +55,18 @@ public class ProductDetailFragment extends Fragment {
         comments = view.findViewById(R.id.recycler_view_comments);
         imgFood = view.findViewById(R.id.imageFood);
         ProductDetailViewModel viewModel = new ProductDetailViewModel(food);
-        viewModel.getDataName().observe(getViewLifecycleOwner(), new Observer<String>() {
+        viewModel.getDataFood().observe(getViewLifecycleOwner(), new Observer<Food>() {
             @Override
-            public void onChanged(String s) {
-                foodName.setText(s);
-            }
-        });
-        viewModel.getDataDescription().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                describe.setText(s);
-            }
-        });
-        viewModel.getDataPrice().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                money.setText(String.valueOf(s));
-            }
-        });
-        viewModel.getDataPrice().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                money.setText(String.valueOf(s));
-            }
-        });
-        viewModel.getDataSell().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                sell.setText(String.valueOf(s));
-            }
-        });
-        viewModel.getDataRatePoint().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                ratePoint.setText(String.valueOf(s));
-            }
-        });
-        viewModel.getDataImg().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
+            public void onChanged(Food f) {
                 Glide.with(imgFood.getContext())
-                        .load(s)
+                        .load(f.getImage())
                         .into(imgFood);
+                ratePoint.setText(String.valueOf(f.getRatePoint()));
+                foodName.setText(f.getName());
+                money.setText(String.valueOf(f.getPrice()));
+                describe.setText(f.getDescription());
+                sell.setText(String.valueOf(f.getSales()));
+
             }
         });
         //Hien List Comments
