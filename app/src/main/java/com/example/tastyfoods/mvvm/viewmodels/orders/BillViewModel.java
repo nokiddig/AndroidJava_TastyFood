@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.tastyfoods.mvvm.model.Bill;
 import com.example.tastyfoods.mvvm.model.BillDetail;
 import com.example.tastyfoods.mvvm.model.CartDetail;
+import com.example.tastyfoods.mvvm.viewmodels.profile.ProfileViewModel;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -53,6 +54,7 @@ public class BillViewModel extends ViewModel {
                         this.saveBillDetailsByCartDetail(cartDetails, maxBillId);
                         firebaseFirestore.collection("bill").document(String.valueOf(maxBillId))
                                 .set(bill);
+                        ProfileViewModel.getInstance().updateMoney(-bill.getTotalMoney());
                     });
     }
 

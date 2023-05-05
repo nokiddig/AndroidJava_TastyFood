@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +20,7 @@ import com.example.tastyfoods.mvvm.model.Bill;
 import com.example.tastyfoods.mvvm.model.CartDetail;
 import com.example.tastyfoods.mvvm.viewmodels.cartdetail.CartViewModel;
 import com.example.tastyfoods.mvvm.viewmodels.orders.BillViewModel;
+import com.example.tastyfoods.mvvm.viewmodels.profile.ProfileViewModel;
 
 import java.util.Date;
 import java.util.List;
@@ -94,11 +94,13 @@ public class CartFragment extends Fragment {
         buttonCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("TAG", "onClick: checkout");
-                Bill bill = new Bill(0, !COMPLETED, new Date(), Integer.parseInt(total.getText().toString()), phoneNumber);
-                BillViewModel billViewModel = new BillViewModel();
-                billViewModel.saveBill(bill, cartViewModel.getListCart().getValue());
-                cartViewModel.clearCart();
+                int totalBill = Integer.parseInt(total.getText().toString());
+                if (ProfileViewModel.getInstance().getUser().getValue().getMoney()>=totalBill) {
+                    Bill bill = new Bill(0, !COMPLETED, new Date(), totalBill, phoneNumber);
+                    BillViewModel billViewModel = new BillViewModel();
+                    billViewModel.saveBill(bill, cartViewModel.getListCart().getValue());
+                    cartViewModel.clearCart();
+                }
             }
         });
         return view;

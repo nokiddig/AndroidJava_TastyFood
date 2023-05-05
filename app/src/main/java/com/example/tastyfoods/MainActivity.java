@@ -8,7 +8,6 @@ import android.view.MenuItem;
 
 import com.example.tastyfoods.mvvm.view.CartFragment;
 import com.example.tastyfoods.mvvm.view.home.HomeFragment;
-import com.example.tastyfoods.mvvm.view.orders.DeliveryFragment;
 import com.example.tastyfoods.mvvm.view.orders.OrderFragment;
 import com.example.tastyfoods.mvvm.view.profile.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
