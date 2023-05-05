@@ -1,11 +1,14 @@
 package com.example.tastyfoods.mvvm.viewmodels.cartdetail;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.tastyfoods.mvvm.model.CartDetail;
 import com.example.tastyfoods.mvvm.model.Food;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -91,5 +94,23 @@ public class CartViewModel extends ViewModel {
 
     public MutableLiveData<Integer> getTotal() {
         return total;
+    }
+
+    public MutableLiveData<List<CartDetail>> getListCart() {
+        return mCart;
+    }
+
+    public void clearCart() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference usersRef = db.collection("cartDetail");
+        usersRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                for (QueryDocumentSnapshot document : task.getResult()) {
+                    document.getReference().delete();
+                }
+            } else {
+                Log.d("xoa", "Error getting documents: ", task.getException());
+            }
+        });
     }
 }
