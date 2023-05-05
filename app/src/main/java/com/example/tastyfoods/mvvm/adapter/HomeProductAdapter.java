@@ -15,16 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.tastyfoods.R;
-import com.example.tastyfoods.mvvm.model.CartDetail;
 import com.example.tastyfoods.mvvm.model.Food;
 import com.example.tastyfoods.mvvm.view.productdetail.ProductDetailFragment;
-import com.example.tastyfoods.mvvm.viewmodels.home.ProductViewModel;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
+import com.example.tastyfoods.mvvm.viewmodels.cartdetail.CartViewModel;
 
 import androidx.fragment.app.FragmentManager;
 
@@ -33,93 +26,49 @@ import java.util.List;
 public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.ViewHolder>{
 
         private List<Food> mFoods;
-        private Context mContext;
+        private final Context CONTEXT;
 
     public HomeProductAdapter(Context context, List<Food> foods) {
-            mContext = context;
+            CONTEXT = context;
             mFoods = foods;
         }
 
         @NonNull
         @Override
         public HomeProductAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.item_home_product, parent, false);
+            View view = LayoutInflater.from(CONTEXT).inflate(R.layout.item_home_product, parent, false);
             return new HomeProductAdapter.ViewHolder(view);
         }
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             Food food = mFoods.get(position);
-            ProductViewModel productViewModel = new ProductViewModel();
 
             holder.textViewName.setText(food.getName());
-            holder.textViewPrice.setText(food.getPrice() + "đ");
+            holder.textViewPrice.setText(String.valueOf(food.getPrice()).concat("đ"));
 
-            Glide.with(mContext)
+            Glide.with(CONTEXT)
                     .load(food.getImage())
                     .centerCrop()
                     .placeholder(R.drawable.anh)
                     .into(holder.imageViewProduct);
-            holder.imageViewProduct.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    // show product detail
-                    // send data to Fragment ProductDetailFragment
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("food", food);
-                    ProductDetailFragment productDetailFragment = new ProductDetailFragment();
-                    productDetailFragment.setArguments(bundle);
+            holder.imageViewProduct.setOnClickListener(view -> {
+                // show product detail
+                // send data to Fragment ProductDetailFragment
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("food", food);
+                ProductDetailFragment productDetailFragment = new ProductDetailFragment();
+                productDetailFragment.setArguments(bundle);
 
-                    // replace this Fragment to ProductDetailFragment
-                    FragmentManager fragmentManager = ((AppCompatActivity) mContext).getSupportFragmentManager();
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.frameLayout, productDetailFragment)
-                            .addToBackStack("productDetail")
-                            .commit();
-                }
+                // replace this Fragment to ProductDetailFragment
+                FragmentManager fragmentManager = ((AppCompatActivity) CONTEXT).getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, productDetailFragment)
+                        .addToBackStack("productDetail")
+                        .commit();
             });
-            holder.buttonAdd.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    // add to cart
-                    FirebaseFirestore db = FirebaseFirestore.getInstance();
-                    db.collection("cartDetail")
-                        .whereEqualTo("foodId", food.getFoodId())
-                        .limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                            @Override
-                            public void onSuccess(QuerySnapshot querySnapshot) {
-                                long maxCartDetailId = 1;
-                                if (!querySnapshot.isEmpty()) {
-                                    DocumentSnapshot documentSnapshot = querySnapshot.getDocuments().get(0);
-                                    CartDetail cartDetail = documentSnapshot.toObject(CartDetail.class);
-                                    cartDetail.setAmount(cartDetail.getAmount()+1);
-                                    cartDetail.setMoney(cartDetail.getMoney()+ food.getPrice());
-                                    db.collection("cartDetail").document(documentSnapshot.getId())
-                                            .set(cartDetail);
-                                }
-                                else {
-                                    db.collection("cartDetail")
-                                        .orderBy("cartDetailId", Query.Direction.DESCENDING)
-                                        .limit(1)
-                                        .get()
-                                        .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                            @Override
-                                            public void onSuccess(QuerySnapshot querySnapshot) {
-                                                long maxCartDetailId = 1;
-                                                if (!querySnapshot.isEmpty()) {
-                                                    DocumentSnapshot documentSnapshot = querySnapshot.getDocuments().get(0);
-                                                    maxCartDetailId = documentSnapshot.getLong("cartDetailId") + 1;
-                                                }
-                                                CartDetail cartDetail = new CartDetail((int) maxCartDetailId, food.getFoodId(), food.getPrice(),
-                                                        1, FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
-                                                db.collection("cartDetail").document(String.valueOf(maxCartDetailId))
-                                                        .set(cartDetail);
-                                            }
-                                        });
-                                }
-
-                            }
-                        });
-                }
+            holder.buttonAdd.setOnClickListener(view -> {
+                // add to cart
+                new CartViewModel().addToCart(food);
             });
         }
 
@@ -142,12 +91,4 @@ public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.
                 buttonAdd = itemView.findViewById(R.id.imageButton);
             }
         }
-
-    public List<Food> getMFoods() {
-        return mFoods;
-    }
-
-    public void setMFoods(List<Food> mFoods) {
-        this.mFoods = mFoods;
-    }
 }
