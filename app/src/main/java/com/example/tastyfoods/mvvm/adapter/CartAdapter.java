@@ -1,7 +1,6 @@
 package com.example.tastyfoods.mvvm.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,18 +14,18 @@ import com.bumptech.glide.Glide;
 import com.example.tastyfoods.R;
 import com.example.tastyfoods.mvvm.model.CartDetail;
 import com.example.tastyfoods.mvvm.model.Food;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.example.tastyfoods.mvvm.viewmodels.cartdetail.CartViewModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
     private List<CartDetail> mCart;
-    private Context mContext;
+    private final Context CONTEXT;
+    private final int ADD = 1, REMOVE = -1;
 
     public CartAdapter(Context context, List<CartDetail> cartDetails) {
-        mContext = context;
+        CONTEXT = context;
         mCart = cartDetails;
     }
 
@@ -34,25 +33,36 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_cart, parent, false);
+        View view = LayoutInflater.from(CONTEXT).inflate(R.layout.item_cart, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CartDetail cartDetail = mCart.get(position);
+        CartViewModel cartViewModel = new CartViewModel();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("food").document(String.valueOf(cartDetail.getFoodId())).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
+        db.collection("food")
+            .document(String.valueOf(cartDetail.getFoodId()))
+            .get()
+            .addOnSuccessListener(documentSnapshot -> {
                 Food tmp = documentSnapshot.toObject(Food.class);
-                Glide.with(mContext).load(tmp.getImage()).into(holder.imageViewProduct);
+                assert tmp != null;
+                Glide.with(CONTEXT).load(tmp.getImage()).into(holder.imageViewProduct);
                 holder.textViewPrice.setText(String.valueOf(tmp.getPrice()));
                 holder.textViewName.setText(tmp.getName());
-            }
         });
         holder.textViewAmount.setText(String.valueOf(cartDetail.getAmount()));
         holder.textViewTotal.setText(String.valueOf(cartDetail.getMoney()));
+        holder.imageViewAdd.setOnClickListener(view -> {
+                cartDetail.setAmount(cartDetail.getAmount() + ADD);
+                cartViewModel.updateCart(cartDetail);
+        });
+
+        holder.imageViewMinus.setOnClickListener(view -> {
+            cartDetail.setAmount(cartDetail.getAmount() + REMOVE);
+            cartViewModel.updateCart(cartDetail);
+        });
     }
 
     @Override
@@ -61,7 +71,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-
         ImageView imageViewProduct;
         TextView textViewName, textViewAmount, textViewPrice, textViewTotal;
         ImageView imageViewMinus, imageViewAdd;
@@ -76,9 +85,5 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
             imageViewMinus = itemView.findViewById(R.id.minus);
             imageViewAdd = itemView.findViewById(R.id.add);
         }
-    }
-
-    public List<CartDetail> getMCart() {
-        return mCart;
     }
 }
