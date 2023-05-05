@@ -20,6 +20,7 @@ import com.example.tastyfoods.R;
 import com.example.tastyfoods.mvvm.adapter.CommentsProductAdapter;
 import com.example.tastyfoods.mvvm.model.Feedback;
 import com.example.tastyfoods.mvvm.model.Food;
+import com.example.tastyfoods.mvvm.viewmodels.cartdetail.CartViewModel;
 import com.example.tastyfoods.mvvm.viewmodels.productdetail.CommentsProductViewModel;
 import com.example.tastyfoods.mvvm.viewmodels.productdetail.ProductDetailViewModel;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -47,6 +48,8 @@ public class ProductDetailFragment extends Fragment {
         RecyclerView comments;
         ImageView imgFood;
         TextView foodName, money, describe, ratePoint, sell;
+        Button buttonAdd;
+        buttonAdd = view.findViewById(R.id.btn_add);
         foodName = view.findViewById(R.id.text_name);
         money = view.findViewById(R.id.text_money);
         ratePoint = view.findViewById(R.id.text_ratePoint);
@@ -87,6 +90,12 @@ public class ProductDetailFragment extends Fragment {
                     return;
                 }
                 getParentFragmentManager().popBackStack();
+            }
+        });
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new CartViewModel().addToCart(food);
             }
         });
         return view;
