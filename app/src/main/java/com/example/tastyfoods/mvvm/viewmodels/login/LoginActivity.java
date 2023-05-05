@@ -33,14 +33,14 @@ import java.util.concurrent.TimeUnit;
 public class LoginActivity extends AppCompatActivity {
 
     private  static  final  String TAG= MainActivity.class.getName();
-    FirebaseAuth mAuth;
-    FirebaseFirestore db;
-    Button btnVerifyPhoneNumber;
-    EditText edtPhoneNumber;
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
+    private Button btnVerifyPhoneNumber;
+    private EditText edtPhoneNumber;
 
-    TextView extError;
+    private TextView extError;
 
-    TextView tvRegister;
+    private TextView tvRegister;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
     private void gotoRegisterActivity() {
         Intent intent=new Intent(this,RegisterActivity.class);
         startActivity(intent);
+        finish();
     }
 
     private void InitWidgest() {
@@ -150,6 +151,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent=new Intent(this,MainActivity.class);
         intent.putExtra("phone_number",phoneNumber);
         startActivity(intent);
+        finish();
     }
 
     private void gotoEnterOtpActivity(String strPhoneNumber, String verificationId) {
@@ -158,5 +160,6 @@ public class LoginActivity extends AppCompatActivity {
     intent.putExtra("action","login");
     intent.putExtra("verification_id",verificationId);
     startActivity(intent);
+    finish();
     }
 }

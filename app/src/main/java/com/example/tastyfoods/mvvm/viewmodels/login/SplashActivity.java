@@ -12,31 +12,42 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SplashActivity extends AppCompatActivity {
-
+    private Handler handler;
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
-        Handler handler=new Handler();
+        handler=new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 nextActivity();
             }
         }, 2000);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                intent=new Intent(SplashActivity.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }, 4000);
     }
 
     private void nextActivity() {
         FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
         if(user==null){
-            Intent intent=new Intent(this,LoginActivity.class);
+            intent=new Intent(this,LoginActivity.class);
             startActivity(intent);
+            finish();
         }
         else {
-            Intent intent=new Intent(this, MainActivity.class);
+            intent=new Intent(this, MainActivity.class);
             intent.putExtra("phoneNumber",user.getPhoneNumber());
             startActivity(intent);
+            finish();
         }
     }
 }

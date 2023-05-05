@@ -39,22 +39,22 @@ public class RegisterActivity extends AppCompatActivity {
 
     public static final String TAG = RegisterActivity.class.getName();
 
-    EditText edt_username;
+    private EditText edt_username;
 
-    EditText edt_password;
+    private EditText edt_password;
 
-    EditText edt_phonenumber;
+    private EditText edt_phonenumber;
 
-    ImageView img_back;
+    private ImageView img_back;
 
-    Button btn_register;
+    private Button btn_register;
 
     User user;
-    FirebaseFirestore db;
+    private FirebaseFirestore db;
 
-    FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
 
-    Boolean check;
+    private Boolean check;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,9 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String userpassword = edt_password.getText().toString().trim();
                 String userphonenumber = edt_phonenumber.getText().toString().trim();
                 user = new User(username, userphonenumber, userpassword);
-                if(checkUser(userphonenumber)==true){
-                    onClickVerifyPhoneNumber(userphonenumber);
-                }
+                checkUser(userphonenumber);
             }
         });
         img_back.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void gotoLoginActivity() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
+        finish();
     }
 
     private void Initwigest() {
@@ -124,7 +123,7 @@ public class RegisterActivity extends AppCompatActivity {
         PhoneAuthProvider.verifyPhoneNumber(options);
     }
 
-    private Boolean checkUser(String phonenumber) {
+    private void checkUser(String phonenumber) {
         check=true;
         db.collection("user").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -132,16 +131,15 @@ public class RegisterActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         if (document.getId().equals(phonenumber)) {
-                            check=false;
+                            onClickVerifyPhoneNumber(phonenumber);
                         }
                     }
-                    Log.d(TAG, "Error getting documents: ", task.getException());
+                    return;
                 } else {
                     Log.d(TAG, "Error getting documents: ", task.getException());
                 }
             }
         });
-        return check;
     }
 
 

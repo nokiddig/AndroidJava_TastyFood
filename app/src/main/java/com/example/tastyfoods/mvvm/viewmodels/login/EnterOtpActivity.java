@@ -37,23 +37,23 @@ public class EnterOtpActivity extends AppCompatActivity {
 
     static  final  String  TAG=EnterOtpActivity.class.getName();
 
-    PhoneAuthProvider.ForceResendingToken mForceResendingToken;
+    private PhoneAuthProvider.ForceResendingToken mForceResendingToken;
 
 
-    String action;
+    private String action;
 
-    String mUsername;
+    private String mUsername;
 
-    String mUserpassword;
-    FirebaseAuth mAuth;
+    private String mUserpassword;
+    private FirebaseAuth mAuth;
 
-    FirebaseFirestore db;
-    EditText edtOtp;
-    Button btnSendOtpCode;
-    TextView tvSendOtpAgain;
+    private FirebaseFirestore db;
+    private EditText edtOtp;
+    private Button btnSendOtpCode;
+    private TextView tvSendOtpAgain;
 
-    String mPhoneNumber;
-    String mVerificationId;
+    private String mPhoneNumber;
+    private String mVerificationId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -178,5 +178,6 @@ public class EnterOtpActivity extends AppCompatActivity {
         Intent intent=new Intent(this, MainActivity.class);
         intent.putExtra("phoneNumber",mPhoneNumber);
         startActivity(intent);
+        finish();
     }
 }
