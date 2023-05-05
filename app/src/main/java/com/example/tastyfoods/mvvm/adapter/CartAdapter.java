@@ -55,13 +55,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
         holder.textViewAmount.setText(String.valueOf(cartDetail.getAmount()));
         holder.textViewTotal.setText(String.valueOf(cartDetail.getMoney()));
         holder.imageViewAdd.setOnClickListener(view -> {
-                cartDetail.setAmount(cartDetail.getAmount() + ADD);
-                cartViewModel.updateCart(cartDetail);
+                cartViewModel.updateCart(cartDetail, ADD);
         });
 
         holder.imageViewMinus.setOnClickListener(view -> {
-            cartDetail.setAmount(cartDetail.getAmount() + REMOVE);
-            cartViewModel.updateCart(cartDetail);
+            cartViewModel.updateCart(cartDetail, REMOVE);
         });
     }
 

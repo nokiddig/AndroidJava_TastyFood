@@ -79,76 +79,27 @@ public class ListSearchFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_list_search, container, false);
     }
 
-    // code
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // initialize the method
-        dataInitialize();
         recyclerView = view.findViewById(R.id.recyclerviewSearch);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
 
         SearchViewModel searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
-        searchViewModel.findByName(mParam1).observe(getViewLifecycleOwner(), foods -> {
-            SearchAdapter searchAdapter = new SearchAdapter(getContext(), (ArrayList<Food>) foods);
-            recyclerView.setAdapter(searchAdapter);
-        });
 
-    }
-
-    private void dataInitialize() {
-
-        itemSearchArrayList = new ArrayList<>();
-        image = new int[]{
-                R.drawable.bread,
-                R.drawable.pizza,
-                R.drawable.sandwich_thit_bo,
-                R.drawable.pizza_sea,
-                R.drawable.coca,
-                R.drawable.pepsi,
-
-        };
-        name = new String[]{
-                "Pork sandwich",
-                "Cheese pizza",
-                "Beef sandwich",
-                "Seafood pizza",
-                "Coca-cola",
-                "Pepsi",
-        };
-        describe = new String[]{
-                "Crispy and spicy",
-                "Crispy and chewy pizza",
-                "Chewy and fragrant",
-                "Including shrimp, vegetables",
-                "Increase energy",
-                "Increase energy",
-        };
-        price = new String[]{
-                "$4",
-                "$21",
-                "$3",
-                "$5",
-                "$1",
-                "$1",
-
-        };
-        button  = new int[]{
-                R.drawable.baseline_control_point_24,
-                R.drawable.baseline_control_point_24,
-                R.drawable.baseline_control_point_24,
-                R.drawable.baseline_control_point_24,
-                R.drawable.baseline_control_point_24,
-                R.drawable.baseline_control_point_24,
-
-        };
-
-        for(int i = 0; i<image.length; i++) {
-            ItemSearch itemSearch = new ItemSearch(image[i], name[i], describe[i], price[i], button[i] );
-            itemSearchArrayList.add(itemSearch);
+        try {
+            int categoryId = Integer.parseInt(mParam1);
+            searchViewModel.findByCategory(categoryId).observe(getViewLifecycleOwner(), foods -> {
+                SearchAdapter searchAdapter = new SearchAdapter(getContext(), (ArrayList<Food>) foods);
+                recyclerView.setAdapter(searchAdapter);
+            });
+        } catch (NumberFormatException nfe) {
+            searchViewModel.findByName(mParam1).observe(getViewLifecycleOwner(), foods -> {
+                SearchAdapter searchAdapter = new SearchAdapter(getContext(), (ArrayList<Food>) foods);
+                recyclerView.setAdapter(searchAdapter);
+            });
         }
     }
 }

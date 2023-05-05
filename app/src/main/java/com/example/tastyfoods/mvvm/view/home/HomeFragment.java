@@ -33,6 +33,17 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
     public static final int ALL_PRODUCT = 0;
+    private RecyclerView recyclerViewProduct;
+    private ProductViewModel productViewModel;
+    private static HomeFragment instance;
+
+    public static HomeFragment getInstance() {
+        if (instance == null) {
+            instance = new HomeFragment();
+        }
+        return instance;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,18 +64,16 @@ public class HomeFragment extends Fragment {
     }
 
     private void setUpLayoutProduct(View view, int categoryId) {
-        RecyclerView recyclerView;
-        ProductViewModel productViewModel;
-        recyclerView = view.findViewById(R.id.recycler_view_product);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        recyclerView.setHasFixedSize(true);
+        recyclerViewProduct = view.findViewById(R.id.recycler_view_product);
+        recyclerViewProduct.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerViewProduct.setHasFixedSize(true);
 
         productViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
         productViewModel.getFoods(categoryId).observe(getViewLifecycleOwner(), new Observer<List<Food>>() {
             @Override
             public void onChanged(List<Food> foods) {
                 HomeProductAdapter homeProductAdapter = new HomeProductAdapter(getContext(), foods);
-                recyclerView.setAdapter(homeProductAdapter);
+                recyclerViewProduct.setAdapter(homeProductAdapter);
             }
         });
     }

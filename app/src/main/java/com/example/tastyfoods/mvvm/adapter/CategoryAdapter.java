@@ -1,6 +1,7 @@
 package com.example.tastyfoods.mvvm.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,11 +9,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.tastyfoods.R;
 import com.example.tastyfoods.mvvm.model.Category;
+import com.example.tastyfoods.mvvm.view.home.HomeFragment;
+import com.example.tastyfoods.mvvm.view.search.SearchFragment;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.List;
@@ -51,6 +56,17 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             @Override
             public void onClick(View view) {
                 // show product by category
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("search", String.valueOf(category.getCategoryId()));
+                SearchFragment searchFragment = new SearchFragment();
+                searchFragment.setArguments(bundle);
+
+                FragmentManager fragmentManager = ((AppCompatActivity) mContext).getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, searchFragment)
+                        .addToBackStack("search")
+                        .commit();
+
             }
         });
     }

@@ -29,8 +29,6 @@ public class SearchFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 getParentFragmentManager().popBackStack();
-                getParentFragmentManager().popBackStack();
-                getParentFragmentManager().popBackStack();
             }
         });
 

@@ -54,6 +54,7 @@ public class CartViewModel extends ViewModel {
                         assert cartDetail != null;
                         cartDetail.setAmount(cartDetail.getAmount()+1);
                         cartDetail.setMoney(cartDetail.getMoney()+ food.getPrice());
+                        Log.d("TAG", "addToCart: " + cartDetail.getMoney() + food.getPrice());
                         firebaseFirestore.collection("cartDetail").document(documentSnapshot.getId())
                                 .set(cartDetail);
                     }
@@ -78,7 +79,10 @@ public class CartViewModel extends ViewModel {
                 });
     }
 
-    public void updateCart(CartDetail cartDetail){
+    public void updateCart(CartDetail cartDetail, int action){
+        int foodPrice = cartDetail.getMoney()/cartDetail.getAmount();
+        cartDetail.setMoney(cartDetail.getMoney() + action*foodPrice);
+        cartDetail.setAmount(cartDetail.getAmount() + action);
         if (cartDetail.getAmount() == 0) {
             this.remove(cartDetail);
             return;
@@ -109,7 +113,7 @@ public class CartViewModel extends ViewModel {
                     document.getReference().delete();
                 }
             } else {
-                Log.d("xoa", "Error getting documents: ", task.getException());
+                Log.d("Delete", "Error getting documents: ", task.getException());
             }
         });
     }
