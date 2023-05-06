@@ -96,7 +96,7 @@ public class CartFragment extends Fragment {
             public void onClick(View view) {
                 int totalBill = Integer.parseInt(total.getText().toString());
                 if (ProfileViewModel.getInstance().getUser().getValue().getMoney()>=totalBill) {
-                    Bill bill = new Bill(0, !COMPLETED, new Date(), totalBill, phoneNumber);
+                    Bill bill = new Bill(0,totalBill, !COMPLETED, new Date(), phoneNumber, "");
                     BillViewModel billViewModel = new BillViewModel();
                     billViewModel.saveBill(bill, cartViewModel.getListCart().getValue());
                     cartViewModel.clearCart();

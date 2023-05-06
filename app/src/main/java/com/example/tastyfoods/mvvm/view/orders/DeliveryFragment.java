@@ -11,9 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.tastyfoods.R;
-import com.google.android.gms.maps.model.CameraPosition;
+import com.example.tastyfoods.mvvm.model.Bill;
+import com.example.tastyfoods.mvvm.viewmodels.orders.DeliveryViewModel;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.mapbox.geojson.Point;
@@ -22,23 +24,21 @@ import com.mapbox.maps.MapView;
 import com.mapbox.maps.MapboxMap;
 import com.mapbox.maps.Style;
 
-import com.mapbox.maps.plugin.LocationPuck2D;
 import com.mapbox.maps.plugin.locationcomponent.OnIndicatorBearingChangedListener;
 import com.mapbox.maps.plugin.locationcomponent.OnIndicatorPositionChangedListener;
-
 
 public class DeliveryFragment extends Fragment  {
 
     private View view;
+    private DeliveryViewModel deliveryViewModel;
+    private TextView txtAddress, txtTotal, txtDatetime;
+    private Button btnReceived;
 
-    TextView txtNameFood, txtAmount, txtAdd, txtTotal;
-    Button btnReceived;
+    private MapView mapView ;
 
-    MapView mapView ;
+    private MarkerOptions markerOptions ;
 
-    MarkerOptions markerOptions ;
-
-    MapboxMap mapboxMap;
+    private MapboxMap mapboxMap;
     public DeliveryFragment() {
     }
 
@@ -63,29 +63,28 @@ public class DeliveryFragment extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_delivery, container, false);
-        txtNameFood = view.findViewById(R.id.txtnameFood);
-        txtAmount = view.findViewById(R.id.txtAmount);
-        txtAdd =view.findViewById(R.id.txtAddress);
-        txtTotal = view.findViewById(R.id.txtTotal);
-        btnReceived = view.findViewById(R.id.btnReceived);
-        mapView = view.findViewById(R.id.map);
-        if (mapView != null) {
-            mapboxMap = mapView.getMapboxMap();
-            if (mapboxMap != null) {
-                mapboxMap.loadStyleUri(Style.MAPBOX_STREETS);
+        init();
+        createMap();
+        deliveryViewModel = new ViewModelProvider(this).get(DeliveryViewModel.class);
+       deliveryViewModel.getBillComing().observe(getViewLifecycleOwner(), bill -> {
+           txtAddress.setText(bill.getAddress());
+           txtTotal.setText(String.valueOf(bill.getTotalMoney()));
+           txtDatetime.setText(bill.getDateTime().toString());
+       });
+
+
+        btnReceived.setOnClickListener(v -> {
+            Bill bill = deliveryViewModel.getBillComing().getValue();
+            if (bill==null){
+                return;
             }
-            LatLng latLng = new LatLng(-23, 345);
-            markerOptions = new MarkerOptions().position(latLng).title("Món ăn của bạn đang tới");
-        }
-        btnReceived.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                HistoryFragment historyFragment = new HistoryFragment();
-                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_delivery, historyFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
-            }
+            bill.setStatus(true);
+            deliveryViewModel.updateBill(bill);
+            onStop();
+            HistoryFragment historyFragment = new HistoryFragment();
+            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_main, historyFragment);
+            transaction.commit();
         });
         return view;
     }
@@ -94,5 +93,31 @@ public class DeliveryFragment extends Fragment  {
     public void onStart() {
         super.onStart();
         mapView.onStart();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mapView.onDestroy();
+    }
+
+    private void init()
+    {
+        txtAddress =view.findViewById(R.id.txtAddress);
+        txtTotal = view.findViewById(R.id.txtTotal);
+        txtDatetime = view.findViewById(R.id.txt_DateTime);
+        btnReceived = view.findViewById(R.id.btnReceived);
+        mapView = view.findViewById(R.id.map);
+    }
+    private void createMap()
+    {
+        if (mapView != null) {
+            mapboxMap = mapView.getMapboxMap();
+            if (mapboxMap != null) {
+                mapboxMap.loadStyleUri(Style.MAPBOX_STREETS);
+            }
+            LatLng latLng = new LatLng(-23, 345);
+            markerOptions = new MarkerOptions().position(latLng).title("Món ăn của bạn đang tới");
+        }
     }
 }

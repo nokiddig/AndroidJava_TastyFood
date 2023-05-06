@@ -40,7 +40,7 @@ public class HistoryFragment extends Fragment {
         recyclerView = view.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setHasFixedSize(true);
-// adapter
+
         billViewModel = new ViewModelProvider(this).get(BillViewModel.class);
         billViewModel.getBills().observe(getViewLifecycleOwner(), new Observer<List<Bill>>() {
             @Override

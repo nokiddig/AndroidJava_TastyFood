@@ -33,11 +33,11 @@ public class DeliveyAdapter extends RecyclerView.Adapter<DeliveyAdapter.delivery
         private Button btnReceived;
         public deliveryViewAdapter(@NonNull View itemView) {
             super(itemView);
-            nameFood = itemView.findViewById(R.id.txtnameFood);
-            address =itemView.findViewById(R.id.txtAddress);
-            amount = itemView.findViewById(R.id.txtAmount);
-            total = itemView.findViewById(R.id.txtTotal);
-            btnReceived =itemView.findViewById(R.id.btnReceived);
+//            nameFood = itemView.findViewById(R.id.txtnameFood);
+//            address =itemView.findViewById(R.id.txtAddress);
+//            amount = itemView.findViewById(R.id.txtAmount);
+//            total = itemView.findViewById(R.id.txtTotal);
+//            btnReceived =itemView.findViewById(R.id.btnReceived);
         }
     }
 

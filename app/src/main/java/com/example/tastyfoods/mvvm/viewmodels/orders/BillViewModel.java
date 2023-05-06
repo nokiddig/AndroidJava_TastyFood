@@ -8,6 +8,7 @@ import com.example.tastyfoods.mvvm.model.Bill;
 import com.example.tastyfoods.mvvm.model.BillDetail;
 import com.example.tastyfoods.mvvm.model.CartDetail;
 import com.example.tastyfoods.mvvm.viewmodels.profile.ProfileViewModel;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -51,15 +52,19 @@ public class BillViewModel extends ViewModel {
                             maxBillId = id==null?0:id + 1;
                         }
                         bill.setBillId((int) maxBillId);
-                        this.saveBillDetailsByCartDetail(cartDetails, maxBillId);
-                        firebaseFirestore.collection("bill").document(String.valueOf(maxBillId))
-                                .set(bill);
-                        ProfileViewModel.getInstance().updateMoney(-bill.getTotalMoney());
+                        firebaseFirestore.collection("user").document(bill.getPhoneNumber()).get()
+                                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                        bill.setAddress(documentSnapshot.getString("address"));
+                                        saveBillDetailsByCartDetail(cartDetails, bill.getBillId());
+                                        firebaseFirestore.collection("bill").document(String.valueOf(bill.getBillId()))
+                                                .set(bill);
+                                        ProfileViewModel.getInstance().updateMoney(-bill.getTotalMoney());
+                                    }
+                                });
+
                     });
-    }
-
-    public void saveBillDetails(BillDetail billDetail){
-
     }
 
     public void saveBillDetailsByCartDetail(List<CartDetail> cartDetails, long billId){

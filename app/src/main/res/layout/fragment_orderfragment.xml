@@ -4,47 +4,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".mvvm.view.orders.OrderFragment">
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/light_orange"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btnDelivery"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/drank_orange"
-            android:text="Đang Giao"
-            android:textSize="16dp" />
-
-        <Button
-            android:id="@+id/btnHitory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/drank_orange"
-            android:text="Lịch Sử"
-            android:textSize="16dp" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="77dp"
-        android:gravity="bottom">
+        android:orientation="vertical">
 
-        <FrameLayout
-            android:id="@+id/fragment_main"
-            android:layout_width="400dp"
-            android:layout_height="550dp">
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_orange"
+            android:gravity="top"
+            android:orientation="horizontal">
 
-        </FrameLayout>
+            <Button
+                android:id="@+id/btnDelivery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/drank_orange"
+                android:text="Đang Giao"
+                android:textSize="16dp" />
 
+            <Button
+                android:id="@+id/btnHitory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/drank_orange"
+                android:text="Lịch Sử"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <FrameLayout
+                android:id="@+id/fragment_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="400dp"
+                android:layout_gravity="bottom"></FrameLayout>
+        </LinearLayout>
     </LinearLayout>
+
 </FrameLayout>

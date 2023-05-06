@@ -6,17 +6,26 @@ public class Bill {
     private  int billId, totalMoney;
     private boolean status;
     private Date dateTime;
-    private String phoneNumber;
+    private String phoneNumber, address;
 
     public Bill() {
     }
 
-    public Bill(int billId, boolean status, Date dateTime, int totalMoney, String phoneNumber) {
+    public Bill(int billId, int totalMoney, boolean status, Date dateTime, String phoneNumber, String address) {
         this.billId = billId;
+        this.totalMoney = totalMoney;
         this.status = status;
         this.dateTime = dateTime;
-        this.totalMoney = totalMoney;
         this.phoneNumber = phoneNumber;
+        this.address = address;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public int getBillId() {
