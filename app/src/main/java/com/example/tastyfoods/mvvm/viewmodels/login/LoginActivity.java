@@ -33,43 +33,36 @@ import java.util.concurrent.TimeUnit;
 public class LoginActivity extends AppCompatActivity {
 
     private  static  final  String TAG= MainActivity.class.getName();
-    FirebaseAuth mAuth;
-    FirebaseFirestore db;
-    Button btnVerifyPhoneNumber;
-    EditText edtPhoneNumber;
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
+    private Button btnVerifyPhoneNumber;
+    private EditText edtPhoneNumber;
 
-    TextView extError;
+    private TextView extError;
 
-    TextView tvRegister;
+    private TextView tvRegister;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        initWidgets();
+        InitWidgest();
         db=FirebaseFirestore.getInstance();
         mAuth=FirebaseAuth.getInstance();
-        btnVerifyPhoneNumber.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String strPhoneNumber=edtPhoneNumber.getText().toString().trim();
-                checkUser(strPhoneNumber);
-            }
+        btnVerifyPhoneNumber.setOnClickListener(v -> {
+            String strPhoneNumber=edtPhoneNumber.getText().toString().trim();
+            checkUser(strPhoneNumber);
         });
 
-        tvRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gotoRegisterActivity();
-            }
-        });
+        tvRegister.setOnClickListener(v -> gotoRegisterActivity());
     }
 
     private void gotoRegisterActivity() {
         Intent intent=new Intent(this,RegisterActivity.class);
         startActivity(intent);
+        finish();
     }
 
-    private void initWidgets() {
+    private void InitWidgest() {
         btnVerifyPhoneNumber=findViewById(R.id.btn_verify_phone_number);
         edtPhoneNumber=findViewById(R.id.edt_phone_number);
         tvRegister=findViewById(R.id.tv_register);
@@ -128,14 +121,14 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
-    private void checkUser(String phoneNumber){
+    private void checkUser(String phonenumber){
         db.collection("user").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        if(document.getId().equals(phoneNumber)){
-                            onClickVerifyPhoneNumber(phoneNumber);
+                        if(document.getId().equals(phonenumber)){
+                            onClickVerifyPhoneNumber(phonenumber);
                         }
                     }
                     Log.d(TAG, "Check user ", task.getException());
@@ -150,6 +143,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent=new Intent(this,MainActivity.class);
         intent.putExtra("phone_number",phoneNumber);
         startActivity(intent);
+        finish();
     }
 
     private void gotoEnterOtpActivity(String strPhoneNumber, String verificationId) {
@@ -158,5 +152,6 @@ public class LoginActivity extends AppCompatActivity {
     intent.putExtra("action","login");
     intent.putExtra("verification_id",verificationId);
     startActivity(intent);
+    finish();
     }
 }

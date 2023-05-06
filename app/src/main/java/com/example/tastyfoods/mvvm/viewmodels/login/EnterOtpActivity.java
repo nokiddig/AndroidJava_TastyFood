@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.tastyfoods.MainActivity;
 import com.example.tastyfoods.R;
+import com.example.tastyfoods.mvvm.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -22,6 +23,7 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
@@ -35,29 +37,29 @@ public class EnterOtpActivity extends AppCompatActivity {
 
     static  final  String  TAG=EnterOtpActivity.class.getName();
 
-    PhoneAuthProvider.ForceResendingToken mForceResendingToken;
+    private PhoneAuthProvider.ForceResendingToken mForceResendingToken;
 
 
-    String action;
+    private String action;
 
-    String mUsername;
+    private String mUsername;
 
-    String mUserPassword;
-    FirebaseAuth mAuth;
+    private String mUserpassword;
+    private FirebaseAuth mAuth;
 
-    FirebaseFirestore db;
-    EditText edtOtp;
-    Button btnSendOtpCode;
-    TextView tvSendOtpAgain;
+    private FirebaseFirestore db;
+    private EditText edtOtp;
+    private Button btnSendOtpCode;
+    private TextView tvSendOtpAgain;
 
-    String mPhoneNumber;
-    String mVerificationId;
+    private String mPhoneNumber;
+    private String mVerificationId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_otp);
         getDataIntent();
-        initWidgets();
+        INitWidgest();
         mAuth=FirebaseAuth.getInstance();
         db=FirebaseFirestore.getInstance();
         btnSendOtpCode.setOnClickListener(new View.OnClickListener() {
@@ -108,7 +110,7 @@ public class EnterOtpActivity extends AppCompatActivity {
         mPhoneNumber=getIntent().getStringExtra("phone_number");
         mVerificationId=getIntent().getStringExtra("verification_id");
         mUsername=getIntent().getStringExtra("username");
-        mUserPassword =getIntent().getStringExtra("password");
+        mUserpassword=getIntent().getStringExtra("password");
         action=getIntent().getStringExtra("action");
     }
 
@@ -117,7 +119,7 @@ public class EnterOtpActivity extends AppCompatActivity {
         signInWithPhoneAuthCredential(credential);
     }
 
-    private void initWidgets() {
+    private void INitWidgest() {
         edtOtp=findViewById(R.id.edt_otp);
         tvSendOtpAgain=findViewById(R.id.tv_send_otp_again);
         btnSendOtpCode=findViewById(R.id.btn_send_otp_code);
@@ -132,7 +134,7 @@ public class EnterOtpActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             if(action.equals("register")) {
-                                addUser(mUsername,mPhoneNumber, mUserPassword);
+                                addUser(mUsername,mPhoneNumber,mUserpassword);
                             }
                             // Update UI
                             gotoMainActivity();
@@ -149,16 +151,16 @@ public class EnterOtpActivity extends AppCompatActivity {
     }
 
     private void  addUser(String name,String phoneNumber,String password){
-        Map<String, Object> newUser = new HashMap<>();
-        newUser.put("userId", "3");
-        newUser.put("phoneNumber",phoneNumber);
-        newUser.put("password", password);
-        newUser.put("name", name);
-        newUser.put("birthday", null);
-        newUser.put("address", "");
-        newUser.put("image", "");
+        Map<String, Object> luser = new HashMap<>();
+        luser.put("userId", "3");
+        luser.put("phoneNumber",phoneNumber);
+        luser.put("password", password);
+        luser.put("name", name);
+        luser.put("birthday", null);
+        luser.put("address", "");
+        luser.put("image", "");
         db.collection("user").document(phoneNumber)
-                .set(newUser)
+                .set(luser)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -174,6 +176,8 @@ public class EnterOtpActivity extends AppCompatActivity {
     }
     private void gotoMainActivity() {
         Intent intent=new Intent(this, MainActivity.class);
+        intent.putExtra("phoneNumber",mPhoneNumber);
         startActivity(intent);
+        finish();
     }
 }
