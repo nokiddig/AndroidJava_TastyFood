@@ -1,7 +1,15 @@
 package com.example.tastyfoods.mvvm.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "cartDetail")
 public class CartDetail {
-    private int cartDetailId, foodId, money, amount;
+
+
+    @PrimaryKey(autoGenerate = true)
+    public int cartDetailId;
+    private int  foodId, money, amount;
     private String phoneNumber;
 
     public CartDetail() {

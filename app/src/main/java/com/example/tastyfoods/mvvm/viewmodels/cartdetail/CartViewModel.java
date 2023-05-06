@@ -5,6 +5,8 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.tastyfoods.mvvm.database.CartDAO;
+import com.example.tastyfoods.mvvm.database.CartDatabase;
 import com.example.tastyfoods.mvvm.model.CartDetail;
 import com.example.tastyfoods.mvvm.model.Food;
 import com.google.firebase.auth.FirebaseAuth;
@@ -83,6 +85,7 @@ public class CartViewModel extends ViewModel {
         int foodPrice = cartDetail.getMoney()/cartDetail.getAmount();
         cartDetail.setMoney(cartDetail.getMoney() + action*foodPrice);
         cartDetail.setAmount(cartDetail.getAmount() + action);
+
         if (cartDetail.getAmount() == 0) {
             this.remove(cartDetail);
             return;
@@ -92,7 +95,8 @@ public class CartViewModel extends ViewModel {
                 .set(cartDetail);
     }
 
-    private void remove(CartDetail cartDetail) {
+    public void remove(CartDetail cartDetail) {
+
         FIRESTORE.collection("cartDetail").document(String.valueOf(cartDetail.getCartDetailId())).delete();
     }
 

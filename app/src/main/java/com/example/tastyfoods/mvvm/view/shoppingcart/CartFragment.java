@@ -1,4 +1,4 @@
-package com.example.tastyfoods.mvvm.view;
+package com.example.tastyfoods.mvvm.view.shoppingcart;
 
 import android.os.Bundle;
 
