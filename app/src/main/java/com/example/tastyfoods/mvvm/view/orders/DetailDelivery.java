@@ -21,10 +21,10 @@ public class DetailDelivery extends AppCompatActivity {
     }
     private void init()
     {
-        txtMoney = findViewById(R.id.txtMoney);
-        txtNameFood = findViewById(R.id.txtnameFood);
-        txtTotal = findViewById(R.id.txtTotal);
-        txtVouchers = findViewById(R.id.txtVouchers);
-        btnReceived = findViewById(R.id.btnReceived);
+//        txtMoney = findViewById(R.id.txtMoney);
+//        txtNameFood = findViewById(R.id.txtnameFood);
+//        txtTotal = findViewById(R.id.txtTotal);
+//        txtVouchers = findViewById(R.id.txtVouchers);
+//        btnReceived = findViewById(R.id.btnReceived);
     }
 }

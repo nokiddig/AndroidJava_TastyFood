@@ -5,9 +5,10 @@
     android:id="@+id/list"
     android:name="com.example.tastyfoods.viewmodel.order.deliveryhitory.HictoryFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context=".mvvm.view.orders.HistoryFragment"
-    tools:listitem="@layout/fragment_bill" />
+    tools:listitem="@layout/item_bill"
+    android:layout_gravity="center"/>
