@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:layout_marginBottom="5dp"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Total"
-            android:textSize="24dp"/>
+            android:textSize="24dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txt_datetime"
@@ -28,7 +31,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:orientation="vertical">
 
         <Button
@@ -36,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Đặt Lại"
-            android:textSize="20dp"
+            android:textSize="16dp"
             android:textStyle="italic"
             android:backgroundTint="@color/drank_orange"/>
     </LinearLayout>

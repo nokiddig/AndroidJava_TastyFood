@@ -147,11 +147,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void gotoEnterOtpActivity(String strPhoneNumber, String verificationId) {
-    Intent intent=new Intent(this,EnterOtpActivity.class);
-    intent.putExtra("phone_number",strPhoneNumber);
-    intent.putExtra("action","login");
-    intent.putExtra("verification_id",verificationId);
-    startActivity(intent);
-    finish();
+        Intent intent=new Intent(this,EnterOtpActivity.class);
+        intent.putExtra("phone_number",strPhoneNumber);
+        intent.putExtra("action","login");
+        intent.putExtra("verification_id",verificationId);
+        startActivity(intent);
+        finish();
     }
 }

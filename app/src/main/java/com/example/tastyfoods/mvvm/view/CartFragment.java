@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tastyfoods.R;
 import com.example.tastyfoods.mvvm.adapter.CartAdapter;
@@ -42,6 +44,7 @@ public class CartFragment extends Fragment {
     private AppCompatButton buttonCheckout;
     private RecyclerView recyclerView;
     private TextView total;
+    private EditText editTextNote;
     public CartFragment() {
         // Required empty public constructor
     }
@@ -94,13 +97,17 @@ public class CartFragment extends Fragment {
         buttonCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(view.getContext(), "yầu đặt món của quý khách đã được ghi nhận!", Toast.LENGTH_SHORT).show();
+
                 int totalBill = Integer.parseInt(total.getText().toString());
-                if (ProfileViewModel.getInstance().getUser().getValue().getMoney()>=totalBill) {
-                    Bill bill = new Bill(0,totalBill, !COMPLETED, new Date(), phoneNumber, "");
-                    BillViewModel billViewModel = new BillViewModel();
-                    billViewModel.saveBill(bill, cartViewModel.getListCart().getValue());
-                    cartViewModel.clearCart();
-                }
+                if (totalBill>0)
+                    if (ProfileViewModel.getInstance().getUser().getValue().getMoney()>=totalBill) {
+                        Bill bill = new Bill(0,totalBill, !COMPLETED, new Date(), phoneNumber, "");
+                        BillViewModel billViewModel = new BillViewModel();
+                        billViewModel.saveBill(bill, cartViewModel.getListCart().getValue());
+                        cartViewModel.clearCart();
+                        editTextNote.setText("");
+                    }
             }
         });
         return view;
@@ -113,5 +120,6 @@ public class CartFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setHasFixedSize(true);
         buttonCheckout = view.findViewById(R.id.buttonCheckout);
+        editTextNote = view.findViewById(R.id.edittextNote);
     }
 }

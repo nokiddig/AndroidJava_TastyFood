@@ -13,10 +13,7 @@
         android:id="@+id/recyclerviewSearch"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_search"
-        />
-
-
+        tools:listitem="@layout/item_search" />
 
 
 </FrameLayout>

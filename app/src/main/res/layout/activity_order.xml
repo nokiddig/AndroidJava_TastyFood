@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@color/drank_orange"
-            android:text="Đang Giao"
+            android:text="Đang đặt"
             android:textSize="16dp" />
 
         <Button
@@ -45,15 +45,16 @@
 
         <FrameLayout
             android:id="@+id/fragment_main"
-            android:layout_width="400dp"
-            android:layout_height="550dp">
-
+            android:layout_width="match_parent"
+            android:layout_height="500dp">
         </FrameLayout>
 
         <FrameLayout
             android:id="@+id/fragment_footer"
-            android:layout_width="416dp"
-            android:layout_height="62dp">
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginBottom="10dp"
+            >
 
         </FrameLayout>
     </LinearLayout>

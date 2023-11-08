@@ -42,7 +42,7 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.billViewAdapte
         }
         holder.txtDateTime.setText(String.valueOf(bill.getDateTime()));
 
-        holder.txtTotal.setText(String.valueOf(bill.getTotalMoney()));
+        holder.txtTotal.setText(String.valueOf(bill.getTotalMoney() + "d"));
     }
 
     @Override

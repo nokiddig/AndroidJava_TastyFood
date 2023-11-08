@@ -47,7 +47,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
             .get()
             .addOnSuccessListener(documentSnapshot -> {
                 Food tmp = documentSnapshot.toObject(Food.class);
-                assert tmp != null;
+                //assert tmp != null;
                 Glide.with(CONTEXT).load(tmp.getImage()).into(holder.imageViewProduct);
                 holder.textViewPrice.setText(String.valueOf(tmp.getPrice()));
                 holder.textViewName.setText(tmp.getName());

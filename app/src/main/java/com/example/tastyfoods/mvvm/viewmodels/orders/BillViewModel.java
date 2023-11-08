@@ -22,7 +22,7 @@ public class BillViewModel extends ViewModel {
 
     public LiveData<List<Bill>> getBills() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("bill").addSnapshotListener((value, error) -> {
+        db.collection("bill").orderBy("dateTime", Query.Direction.DESCENDING).addSnapshotListener((value, error) -> {
             try {
                 if (value != null) {
                     List<Bill> bills = new ArrayList<>();

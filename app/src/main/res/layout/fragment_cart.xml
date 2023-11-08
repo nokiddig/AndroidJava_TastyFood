@@ -18,15 +18,16 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
-                android:text="Shopping Cart"
-                android:textSize="26sp"
-                android:textStyle="bold"
-                android:textColor="@color/drank_orange"
-                android:textAlignment="center"
-                android:padding="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Giỏ hàng"
+                android:textAlignment="center"
+                android:textColor="@color/drank_orange"
+                android:textSize="26sp"
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewCart"
@@ -37,13 +38,14 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
-                    android:layout_weight="1"
-                    android:textColor="@color/black"
-                    android:text="Item Total"
-                    android:textStyle="bold"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Tổng tiền"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textViewTotalMoney"
@@ -58,6 +60,18 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:text="Ghi chú:"></TextView>
+
+            <EditText
+                android:id="@+id/edittextNote"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Ghi chú của bạn..."></EditText>
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonCheckout"
                 android:layout_width="match_parent"
@@ -66,7 +80,7 @@
                 android:layout_marginTop="25sp"
                 android:layout_marginEnd="25sp"
                 android:background="@drawable/bottom_c"
-                android:text="Checkout"
+                android:text="Đặt món"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
         </LinearLayout>

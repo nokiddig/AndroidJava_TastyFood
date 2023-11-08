@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Your Profile"
+            android:text="Thông tin"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -70,7 +70,7 @@
                 android:background="#FF8000"
                 android:paddingStart="30dp"
                 android:paddingEnd="30dp"
-                android:text="Change your avatar"
+                android:text="Thay ảnh đại diện"
                 android:textAllCaps="false"
                 android:textColor="#4A148C" />
 
@@ -101,10 +101,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Full name"
+                        android:layout_toEndOf="@+id/nameIcon"
+                        android:text="Tên"
                         android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:layout_toEndOf="@+id/nameIcon"/>
+                        android:textStyle="bold" />
 
                     <EditText
                         android:layout_width="wrap_content"
@@ -133,11 +133,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="Birthday"
+                        android:layout_toEndOf="@+id/birthdayIcon"
+                        android:text="Ngày sinh"
                         android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:layout_toEndOf="@+id/birthdayIcon"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -166,10 +165,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Address"
+                        android:layout_toEndOf="@+id/addressIcon"
+                        android:text="Địa chỉ"
                         android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:layout_toEndOf="@+id/addressIcon"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -195,11 +194,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="Phone Number"
+                        android:layout_toEndOf="@+id/phoneNoIcon"
+                        android:text="Số điện thoại"
                         android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:layout_toEndOf="@+id/phoneNoIcon"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -226,10 +224,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Change your password"
+                        android:layout_toEndOf="@+id/passwordIcon"
+                        android:text="Mật khẩu"
                         android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:layout_toEndOf="@+id/passwordIcon"/>
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -277,9 +275,9 @@
                 android:background="#FF8000"
                 android:paddingStart="30dp"
                 android:paddingEnd="30dp"
-                android:text="Save your changes"
+                android:text="Lưu thay đổi"
                 android:textAllCaps="false"
-                android:textColor="#4A148C"/>
+                android:textColor="#4A148C" />
 
         </LinearLayout>
     </ScrollView>

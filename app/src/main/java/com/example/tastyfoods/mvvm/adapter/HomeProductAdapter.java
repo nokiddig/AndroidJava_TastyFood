@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -67,6 +68,7 @@ public class HomeProductAdapter extends RecyclerView.Adapter<HomeProductAdapter.
                         .commit();
             });
             holder.buttonAdd.setOnClickListener(view -> {
+                Toast.makeText(view.getContext(), "Thêm sản phẩm thành công!", Toast.LENGTH_SHORT).show();
                 // add to cart
                 new CartViewModel().addToCart(food);
             });

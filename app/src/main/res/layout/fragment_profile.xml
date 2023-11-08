@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Your Profile"
+            android:text="Thông tin"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -96,7 +96,7 @@
                 android:background="#FF8000"
                 android:paddingStart="30dp"
                 android:paddingEnd="30dp"
-                android:text="Change your avatar"
+                android:text="Đổi ảnh đại diện"
                 android:textAllCaps="false"
                 android:textColor="#4A148C" />
 
@@ -126,11 +126,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="Full name"
+                        android:layout_toEndOf="@+id/nameIcon"
+                        android:text="Tên"
                         android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:layout_toEndOf="@+id/nameIcon"/>
+                        android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/editTextFullName"
@@ -161,10 +160,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Birthday"
+                        android:layout_toEndOf="@+id/birthdayIcon"
+                        android:text="Sinh nhật"
                         android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:layout_toEndOf="@+id/birthdayIcon"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -193,10 +192,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Address"
+                        android:layout_toEndOf="@+id/addressIcon"
+                        android:text="Địa chỉ"
                         android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:layout_toEndOf="@+id/addressIcon"/>
+                        android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/editTextAddress"
@@ -224,10 +223,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Phone Number"
+                        android:layout_toEndOf="@+id/phoneNoIcon"
+                        android:text="Số ĐT"
                         android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:layout_toEndOf="@+id/phoneNoIcon"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textViewPhoneNumber"
@@ -257,7 +256,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toEndOf="@+id/passwordIcon"
-                        android:text="Change your password"
+                        android:text="Mật khẩu "
                         android:textColor="#000000"
                         android:textStyle="bold" />
 
@@ -285,10 +284,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Your balance"
+                        android:layout_toEndOf="@+id/moneyIcon"
+                        android:text="Tiền"
                         android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:layout_toEndOf="@+id/moneyIcon"/>
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -308,7 +307,7 @@
                 android:background="#FF8000"
                 android:paddingStart="30dp"
                 android:paddingEnd="30dp"
-                android:text="Save your changes"
+                android:text="Lưu thay đổi"
                 android:textAllCaps="false"
                 android:textColor="#4A148C" />
 
